@@ -1,5 +1,5 @@
-import type { Metadata } from "next"
-import ClientPage from "./ClientPage"
+import type { Metadata } from "next";
+import AboutClientPage from "./about/AboutClientPage";
 
 export const metadata: Metadata = {
   title: "Ahmed Shenawy - Mobile Network Specialist",
@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-}
+};
 
-export default async function Home() {
-  return <ClientPage />
+export default function Home() {
+  return <AboutClientPage />;
 }

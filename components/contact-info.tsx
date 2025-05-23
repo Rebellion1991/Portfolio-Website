@@ -1,11 +1,17 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import type { Profile } from "@/lib/types"
-import { MailIcon, MapPinIcon, LinkedinIcon, GithubIcon, ClockIcon } from "lucide-react"
+import { motion } from "framer-motion";
+import type { Profile } from "@/lib/types";
+import {
+  MailIcon,
+  MapPinIcon,
+  LinkedinIcon,
+  GithubIcon,
+  ClockIcon,
+} from "lucide-react";
 
 interface ContactInfoProps {
-  profile: Profile
+  profile: Profile;
 }
 
 export function ContactInfo({ profile }: ContactInfoProps) {
@@ -29,7 +35,7 @@ export function ContactInfo({ profile }: ContactInfoProps) {
       value: "Within 24 hours",
       description: "During business days",
     },
-  ]
+  ];
 
   const socialLinks = [
     {
@@ -44,7 +50,7 @@ export function ContactInfo({ profile }: ContactInfoProps) {
       href: profile.socialLinks.github,
       color: "hover:text-gray-900 dark:hover:text-gray-100",
     },
-  ].filter((link) => link.href)
+  ].filter((link) => link.href);
 
   return (
     <div className="space-y-8">
@@ -55,7 +61,9 @@ export function ContactInfo({ profile }: ContactInfoProps) {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="bg-card rounded-2xl p-6 border shadow-sm"
       >
-        <h3 className="text-xl font-bold mb-6">Contact Information</h3>
+        <h3 className="text-xl font-heading font-bold mb-6">
+          Contact Information
+        </h3>
         <div className="space-y-6">
           {contactMethods.map((method, index) => (
             <motion.div
@@ -69,15 +77,22 @@ export function ContactInfo({ profile }: ContactInfoProps) {
                 <method.icon className="h-5 w-5" />
               </div>
               <div className="flex-1">
-                <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">{method.label}</h4>
+                <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">
+                  {method.label}
+                </h4>
                 {method.href ? (
-                  <a href={method.href} className="font-semibold hover:text-primary transition-colors">
+                  <a
+                    href={method.href}
+                    className="font-semibold hover:text-primary transition-colors"
+                  >
                     {method.value}
                   </a>
                 ) : (
                   <p className="font-semibold">{method.value}</p>
                 )}
-                <p className="text-sm text-muted-foreground mt-1">{method.description}</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {method.description}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -91,7 +106,7 @@ export function ContactInfo({ profile }: ContactInfoProps) {
         transition={{ duration: 0.6, delay: 0.4 }}
         className="bg-card rounded-2xl p-6 border shadow-sm"
       >
-        <h3 className="text-xl font-bold mb-6">Connect With Me</h3>
+        <h3 className="text-xl font-heading font-bold mb-6">Connect With Me</h3>
         <div className="space-y-4">
           {socialLinks.map((social, index) => (
             <motion.a
@@ -120,7 +135,7 @@ export function ContactInfo({ profile }: ContactInfoProps) {
         transition={{ duration: 0.6, delay: 0.6 }}
         className="bg-gradient-to-br from-primary/5 to-purple-500/5 rounded-2xl p-6 border"
       >
-        <h3 className="text-xl font-bold mb-4">Availability</h3>
+        <h3 className="text-xl font-heading font-bold mb-4">Availability</h3>
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
@@ -136,8 +151,8 @@ export function ContactInfo({ profile }: ContactInfoProps) {
           </div>
         </div>
         <p className="text-sm text-muted-foreground mt-4">
-          I'm currently accepting new projects and collaborations. Let's discuss how I can help with your
-          telecommunications needs.
+          I'm currently accepting new projects and collaborations. Let's discuss
+          how I can help with your telecommunications needs.
         </p>
       </motion.div>
 
@@ -148,28 +163,38 @@ export function ContactInfo({ profile }: ContactInfoProps) {
         transition={{ duration: 0.6, delay: 0.8 }}
         className="bg-card rounded-2xl p-6 border shadow-sm"
       >
-        <h3 className="text-xl font-bold mb-6">Frequently Asked</h3>
+        <h3 className="text-xl font-heading font-bold mb-6">
+          Frequently Asked
+        </h3>
         <div className="space-y-4">
           <div>
-            <h4 className="font-medium mb-2">What's your typical response time?</h4>
+            <h4 className="font-heading font-medium mb-2">
+              What's your typical response time?
+            </h4>
             <p className="text-sm text-muted-foreground">
               I respond to all inquiries within 24 hours during business days.
             </p>
           </div>
           <div>
-            <h4 className="font-medium mb-2">Do you work with international clients?</h4>
+            <h4 className="font-heading font-medium mb-2">
+              Do you work with international clients?
+            </h4>
             <p className="text-sm text-muted-foreground">
-              Yes, I work with clients globally and am flexible with different time zones.
+              Yes, I work with clients globally and am flexible with different
+              time zones.
             </p>
           </div>
           <div>
-            <h4 className="font-medium mb-2">What types of projects do you take on?</h4>
+            <h4 className="font-heading font-medium mb-2">
+              What types of projects do you take on?
+            </h4>
             <p className="text-sm text-muted-foreground">
-              I specialize in mobile network optimization, roaming services, and telecommunications consulting.
+              I specialize in mobile network optimization, roaming services, and
+              telecommunications consulting.
             </p>
           </div>
         </div>
       </motion.div>
     </div>
-  )
+  );
 }

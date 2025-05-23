@@ -41,7 +41,7 @@
   --spacing-xl: 4rem;
 }
 
-[data-theme="dark"] {
+.dark {
   --color-primary: #38bdf8; /* High contrast for dark mode */
   --color-secondary: #9ca3af;
   --color-background: #111827;
@@ -87,8 +87,7 @@
     --background: 0 0% 100%;
     --border: 0 0% 0%;
   }
-
-  [data-theme="dark"] {
+  .dark {
     --primary: 199 100% 70%;
     --foreground: 0 0% 100%;
     --background: 0 0% 0%;
@@ -272,7 +271,12 @@ select:focus {
 
 /* Custom utility classes with accessibility in mind */
 .hero-gradient {
-  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 50%, #9333ea 100%);
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--primary)) 50%,
+    #9333ea 100%
+  );
 }
 
 .section-padding {
@@ -297,7 +301,8 @@ select:focus {
 
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 @media (prefers-reduced-motion: reduce) {

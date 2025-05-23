@@ -1,60 +1,61 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { motion } from "framer-motion"
-import { ThemeToggle } from "./theme-toggle"
-import { MobileMenu } from "./mobile-menu"
-import { Menu, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+import { ThemeToggle } from "./theme-toggle";
+import { MobileMenu } from "./mobile-menu";
+import { Menu, X } from "lucide-react";
 
 const routes = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
+  { name: "About", path: "/" },
   { name: "Experience", path: "/experience" },
   { name: "Education", path: "/education" },
   { name: "Courses", path: "/courses" },
   { name: "Contact", path: "/contact" },
-]
+];
 
 export function Header() {
-  const pathname = usePathname()
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
+      setScrolled(window.scrollY > 20);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close mobile menu when escape is pressed
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && mobileMenuOpen) {
-        setMobileMenuOpen(false)
+        setMobileMenuOpen(false);
       }
-    }
+    };
 
-    document.addEventListener("keydown", handleEscape)
-    return () => document.removeEventListener("keydown", handleEscape)
-  }, [mobileMenuOpen])
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [mobileMenuOpen]);
 
   const isActive = (path: string) => {
-    if (path === "/" && pathname === "/") return true
-    if (path !== "/" && pathname.startsWith(path)) return true
-    return false
-  }
+    if (path === "/" && pathname === "/") return true;
+    if (path !== "/" && pathname.startsWith(path)) return true;
+    return false;
+  };
 
   return (
     <>
       <header
         role="banner"
         className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-          scrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b" : "bg-transparent"
+          scrolled
+            ? "bg-background/95 backdrop-blur-md shadow-sm border-b"
+            : "bg-transparent"
         }`}
       >
         <div className="container flex h-16 items-center justify-between">
@@ -74,7 +75,11 @@ export function Header() {
             </Link>
           </motion.div>
 
-          <nav role="navigation" aria-label="Main navigation" className="hidden md:flex items-center gap-8">
+          <nav
+            role="navigation"
+            aria-label="Main navigation"
+            className="hidden md:flex items-center gap-8"
+          >
             {routes.map((route, index) => (
               <motion.div
                 key={route.path}
@@ -111,13 +116,23 @@ export function Header() {
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
             >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
           </motion.div>
         </div>
       </header>
-      <div className="h-16" aria-hidden="true"></div> {/* Spacer for fixed header */}
-      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} routes={routes} id="mobile-menu" />
+      <div className="h-16" aria-hidden="true"></div>{" "}
+      {/* Spacer for fixed header */}
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        routes={routes}
+        id="mobile-menu"
+      />
     </>
-  )
+  );
 }

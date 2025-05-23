@@ -3,7 +3,7 @@
     "id": "exp-1",
     "title": "Roaming Expert",
     "company": "RMI - Rakuten Mobile International",
-    "location": "Germany",
+    "location": "Cyprus",
     "startDate": "2024-04-01",
     "endDate": null,
     "description": "Member of the engineering team for international roaming, overseeing the technical strategy and execution of projects supporting Rakuten's global expansion.",
@@ -14,7 +14,12 @@
       "Participate in cross-functional initiatives to enhance product offerings, drive innovation, and support the growth of Rakuten's international business portfolio",
       "Represent the engineering division in customer engagements, technical workshops, and industry forums, showcasing Rakuten's capabilities and fostering strong global partnerships"
     ],
-    "technologies": ["International Roaming", "Mobile Core Network", "5G SDA Products", "IMS Services"],
+    "technologies": [
+      "International Roaming",
+      "Mobile Core Network",
+      "5G SDA Products",
+      "IMS Services"
+    ],
     "achievements": [
       "Successfully managed engineering stream for professional services",
       "Provided expert guidance on roaming network elements"
@@ -24,7 +29,7 @@
     "id": "exp-2",
     "title": "Senior Roaming Engineer",
     "company": "RMI - Rakuten Mobile International",
-    "location": "Germany",
+    "location": "Cyprus",
     "startDate": "2023-10-01",
     "endDate": "2024-04-30",
     "description": "Co-Lead a professional service project for an MNO operator in Germany to develop and launch the international roaming services.",
@@ -36,7 +41,12 @@
       "Drive continuous improvement initiatives by analyzing roaming service performance",
       "Maintain comprehensive technical documentation and ensure compliance with industry standards"
     ],
-    "technologies": ["5G SDA Products", "IMS Services", "International Roaming", "Mobile Core Network"],
+    "technologies": [
+      "5G SDA Products",
+      "IMS Services",
+      "International Roaming",
+      "Mobile Core Network"
+    ],
     "achievements": [
       "Successfully launched international roaming services for German operator",
       "Implemented advanced 5G roaming capabilities"
@@ -55,7 +65,12 @@
       "Testing eSIM wearable devices",
       "Participated in many projects for terminals from several manufacturers"
     ],
-    "technologies": ["Mobile Terminal Testing", "eSIM", "RAT Technologies", "VAS Services"],
+    "technologies": [
+      "Mobile Terminal Testing",
+      "eSIM",
+      "RAT Technologies",
+      "VAS Services"
+    ],
     "achievements": [
       "Successfully tested multiple terminal devices",
       "Implemented comprehensive field testing protocols"
@@ -74,7 +89,12 @@
       "Implemented decentralized operations for real-world data validation",
       "Created solutions for e-voting and digital assets"
     ],
-    "technologies": ["Blockchain", "Decentralized Operations", "Digital Assets", "Stablecoins"],
+    "technologies": [
+      "Blockchain",
+      "Decentralized Operations",
+      "Digital Assets",
+      "Stablecoins"
+    ],
     "achievements": [
       "Successfully launched blockchain tools for operations",
       "Implemented decentralized validation systems"
@@ -130,7 +150,12 @@
       "Reconciliation of Receivables and Payables roaming accounts",
       "Coordinating AA14/IOT/OpData document updates through GSM Association RAEX system"
     ],
-    "technologies": ["GSM Association RAEX System", "TAP/RAP/NRTRDE Files", "IREG Testing", "Roaming Platforms"],
+    "technologies": [
+      "GSM Association RAEX System",
+      "TAP/RAP/NRTRDE Files",
+      "IREG Testing",
+      "Roaming Platforms"
+    ],
     "achievements": [
       "Successfully launched roaming services from pre-launch phase",
       "Optimized roaming service costs and operations",

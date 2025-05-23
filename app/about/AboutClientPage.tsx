@@ -1,25 +1,48 @@
-"use client"
+/**
+ * @fileoverview Client component for the About page
+ * Displays personal information, professional background, technical skills,
+ * education history, and personal interests in a tabbed interface.
+ * @module app/about/AboutClientPage
+ */
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { getProfile } from "@/lib/content"
-import { OptimizedImage } from "@/components/optimized-image"
-import { Button } from "@/components/ui/button"
-import { Download, Mail, MapPin, Linkedin, Award, Briefcase, GraduationCap, Code } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+"use client";
 
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { getProfile } from "@/lib/content";
+import type { Profile } from "@/lib/types";
+import { OptimizedImage } from "@/components/optimized-image";
+import { Button } from "@/components/ui/button";
+import {
+  Download,
+  Mail,
+  MapPin,
+  Linkedin,
+  Award,
+  Briefcase,
+  GraduationCap,
+  Code,
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+
+/**
+ * AboutClientPage Component
+ * Renders the main content of the About page with tabs for different sections
+ * @component
+ * @returns {JSX.Element} Rendered component
+ */
 export default function AboutClientPage() {
-  const [profile, setProfile] = useState(null)
-  const [activeTab, setActiveTab] = useState("professional")
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [activeTab, setActiveTab] = useState("professional");
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const profileData = await getProfile()
-      setProfile(profileData)
-    }
+      const profileData = await getProfile();
+      setProfile(profileData);
+    };
 
-    fetchProfile()
-  }, [])
+    fetchProfile();
+  }, []);
 
   if (!profile) {
     return (
@@ -30,7 +53,7 @@ export default function AboutClientPage() {
           <div className="h-3 bg-muted rounded w-32"></div>
         </div>
       </div>
-    )
+    );
   }
 
   const tabs = [
@@ -38,7 +61,7 @@ export default function AboutClientPage() {
     { id: "technical", label: "Technical Skills", icon: Code },
     { id: "education", label: "Education", icon: GraduationCap },
     { id: "personal", label: "Personal", icon: Award },
-  ]
+  ];
 
   return (
     <main>
@@ -46,26 +69,22 @@ export default function AboutClientPage() {
       <section className="bg-gradient-to-br from-brand-900 via-brand-800 to-purple-900 text-white py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>
         <div className="container relative z-10">
-          <h1 className="mb-8 text-center md:text-left">About Me</h1>
+          <h1 className="font-heading mb-8 text-center md:text-left">
+            About Me
+          </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             <div className="md:col-span-2">
-              <p className="text-xl text-white/80 mb-8 leading-relaxed">{profile.summary}</p>
+              <p className="text-xl text-white/80 mb-8 leading-relaxed">
+                {profile.summary}
+              </p>{" "}
               <div className="flex flex-wrap gap-8 mt-8">
                 <a
-                  href="/resume.pdf"
-                  download
-                  className="text-cyan-300 hover:text-cyan-100 transition-colors flex items-center gap-2 text-lg group"
-                >
-                  <span>Download Resume</span>
-                  <Download className="h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
-                </a>
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="text-cyan-300 hover:text-cyan-100 transition-colors flex items-center gap-2 text-lg group"
+                  href="#connect"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-all duration-300 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:border-white/30 hover:scale-105 group"
                 >
                   <span>Contact Me</span>
-                  <Mail className="h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
+                  <Mail className="w-4 h-4 text-white transition-transform group-hover:translate-x-0.5" />
                 </a>
               </div>
             </div>
@@ -79,9 +98,9 @@ export default function AboutClientPage() {
                 <OptimizedImage
                   src="/images/ahmed.webp"
                   alt={profile.name}
-                  width={300}
-                  height={300}
-                  className="w-full h-full object-cover"
+                  width={256}
+                  height={256}
+                  className="object-cover w-full h-full"
                   priority
                 />
               </motion.div>
@@ -90,7 +109,6 @@ export default function AboutClientPage() {
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent"></div>
       </section>
-
       {/* Quick Stats */}
       <section className="py-16">
         <div className="container">
@@ -109,7 +127,8 @@ export default function AboutClientPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{
                   y: -5,
-                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                  boxShadow:
+                    "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                 }}
                 className="bg-card rounded-xl p-6 border text-center transition-all duration-300"
               >
@@ -123,7 +142,6 @@ export default function AboutClientPage() {
           </div>
         </div>
       </section>
-
       {/* Tabbed Content Section */}
       <section className="py-20">
         <div className="container">
@@ -163,30 +181,46 @@ export default function AboutClientPage() {
                       className="bg-card rounded-xl p-8 border shadow-sm hover:shadow-md transition-all duration-300"
                       whileHover={{ y: -3 }}
                     >
-                      <h3 className="text-2xl font-bold mb-4">Professional Background</h3>
-                      <p className="text-muted-foreground mb-6">{profile.summary}</p>
+                      <h3 className="font-heading text-2xl font-bold mb-4">
+                        Professional Background
+                      </h3>{" "}
+                      <p className="text-muted-foreground mb-6">
+                        {profile.professionalBackground}
+                      </p>
                       <div className="space-y-4">
                         <div className="flex items-start">
                           <Briefcase className="h-5 w-5 mr-3 text-primary mt-1" />
                           <div>
-                            <h4 className="font-semibold">Current Position</h4>
+                            <h4 className="font-heading font-semibold">
+                              Current Position
+                            </h4>
                             <p className="text-muted-foreground">
-                              Roaming Expert at RMI - Rakuten Mobile International
+                              Roaming Expert at RMI - Rakuten Mobile
+                              International
                             </p>
                           </div>
                         </div>
                         <div className="flex items-start">
                           <MapPin className="h-5 w-5 mr-3 text-primary mt-1" />
                           <div>
-                            <h4 className="font-semibold">Location</h4>
-                            <p className="text-muted-foreground">{profile.location}</p>
+                            <h4 className="font-heading font-semibold">
+                              Location
+                            </h4>
+                            <p className="text-muted-foreground">
+                              {profile.location}
+                            </p>
                           </div>
                         </div>
                         <div className="flex items-start">
                           <Award className="h-5 w-5 mr-3 text-primary mt-1" />
                           <div>
-                            <h4 className="font-semibold">Specialization</h4>
-                            <p className="text-muted-foreground">Mobile Core Network and Roaming Services</p>
+                            <h4 className="font-heading font-semibold">
+                              Specialization
+                            </h4>
+                            <p className="text-muted-foreground">
+                              Mobile Core Network, Roaming Services, Blockchain
+                              Technology
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -196,16 +230,21 @@ export default function AboutClientPage() {
                       className="bg-card rounded-xl p-8 border shadow-sm hover:shadow-md transition-all duration-300"
                       whileHover={{ y: -3 }}
                     >
-                      <h3 className="text-2xl font-bold mb-4">Professional Philosophy</h3>
+                      <h3 className="font-heading text-2xl font-bold mb-4">
+                        Professional Philosophy
+                      </h3>
                       <p className="text-muted-foreground mb-4">
-                        I believe in delivering excellence in telecommunications by focusing on optimization,
-                        reliability, and user experience. My approach combines technical expertise with a deep
-                        understanding of business needs.
+                        I believe in delivering excellence in telecommunications
+                        by focusing on optimization, reliability, and user
+                        experience. My approach combines technical expertise
+                        with a deep understanding of business needs.
                       </p>
                       <p className="text-muted-foreground">
-                        By staying at the forefront of technological advancements and actively contributing to industry
-                        standards, I ensure that the mobile networks I work with provide subscribers with seamless,
-                        high-quality services.
+                        By staying at the forefront of technological
+                        advancements and actively contributing to industry
+                        standards, I ensure that the mobile networks I work with
+                        provide subscribers with seamless, high-quality
+                        services.
                       </p>
                     </motion.div>
                   </motion.div>
@@ -226,31 +265,36 @@ export default function AboutClientPage() {
                         key={skillCategory.category}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+                        transition={{
+                          duration: 0.5,
+                          delay: categoryIndex * 0.1,
+                        }}
                         className="bg-card rounded-xl p-8 border shadow-sm hover:shadow-md transition-all duration-300"
                         whileHover={{ y: -3 }}
                       >
-                        <h3 className="text-2xl font-bold mb-6">{skillCategory.category}</h3>
-                        <div className="grid grid-cols-1 gap-6">
+                        <h3 className="text-2xl font-bold mb-6">
+                          {skillCategory.category}
+                        </h3>{" "}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           {skillCategory.items.map((skill, skillIndex) => (
-                            <div key={skill} className="group">
-                              <div className="flex justify-between items-center mb-2">
-                                <span className="font-medium group-hover:text-primary transition-colors">{skill}</span>
-                                <span className="text-xs text-muted-foreground">
-                                  {/* Simulated skill level - in a real app, this would come from data */}
-                                  {95 - skillIndex * 5}%
+                            <motion.div
+                              key={skill}
+                              initial={{ opacity: 0, y: 10 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{
+                                duration: 0.3,
+                                delay: skillIndex * 0.1,
+                              }}
+                              className="group bg-muted/50 rounded-lg p-3 hover:bg-muted/70 transition-all duration-300"
+                            >
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                                <span className="font-medium group-hover:text-primary transition-colors">
+                                  {skill}
                                 </span>
                               </div>
-                              <div className="w-full bg-muted rounded-full h-2.5 overflow-hidden">
-                                <motion.div
-                                  initial={{ width: 0 }}
-                                  whileInView={{ width: `${95 - skillIndex * 5}%` }}
-                                  viewport={{ once: true }}
-                                  transition={{ duration: 1, delay: 0.2 + skillIndex * 0.1 }}
-                                  className="bg-primary h-2.5 rounded-full transition-all duration-500 ease-out group-hover:bg-primary/80"
-                                ></motion.div>
-                              </div>
-                            </div>
+                            </motion.div>
                           ))}
                         </div>
                       </motion.div>
@@ -272,23 +316,31 @@ export default function AboutClientPage() {
                       className="bg-card rounded-xl p-8 border shadow-sm hover:shadow-md transition-all duration-300"
                       whileHover={{ y: -3 }}
                     >
-                      <h3 className="text-2xl font-bold mb-6">Educational Background</h3>
+                      <h3 className="font-heading text-2xl font-bold mb-6">
+                        Educational Background
+                      </h3>
                       <div className="space-y-8">
                         <div className="relative pl-8 border-l-2 border-primary/20">
                           <div className="absolute w-4 h-4 rounded-full bg-primary left-0 top-0 transform -translate-x-1/2"></div>
-                          <h4 className="text-xl font-bold">Bachelor of Science in Computer Engineering</h4>
+                          <h4 className="font-heading text-xl font-bold">
+                            Bachelor of Science in Computer Engineering
+                          </h4>
                           <p className="text-muted-foreground mb-2">
-                            Arab Academy for Science & Technology AAST, Alexandria Egypt, 2006-2011
+                            Arab Academy for Science & Technology AAST,
+                            Alexandria Egypt, 2006-2011
                           </p>
                           <p>
-                            Developed a comprehensive smart home automation system for the graduation project, featuring
-                            IP wireless cameras for security and control.
+                            Developed a comprehensive smart home automation
+                            system for the graduation project, featuring IP
+                            wireless cameras for security and control.
                           </p>
                         </div>
                         <div className="relative pl-8 border-l-2 border-primary/20">
                           <div className="absolute w-4 h-4 rounded-full bg-primary left-0 top-0 transform -translate-x-1/2"></div>
                           <h4 className="text-xl font-bold">High School</h4>
-                          <p className="text-muted-foreground mb-2">El-Nasr Boys School E.B.S, Alexandria Egypt</p>
+                          <p className="text-muted-foreground mb-2">
+                            El-Nasr Boys School E.B.S, Alexandria Egypt
+                          </p>
                           <p>GPA: 93.5% out of 100%</p>
                         </div>
                       </div>
@@ -298,10 +350,12 @@ export default function AboutClientPage() {
                       className="bg-card rounded-xl p-8 border shadow-sm hover:shadow-md transition-all duration-300"
                       whileHover={{ y: -3 }}
                     >
-                      <h3 className="text-2xl font-bold mb-4">Continuing Education</h3>
+                      <h3 className="font-heading text-2xl font-bold mb-4">
+                        Continuing Education
+                      </h3>
                       <p className="text-muted-foreground mb-6">
-                        I believe in lifelong learning and regularly update my skills through professional courses and
-                        certifications.
+                        I believe in lifelong learning and regularly update my
+                        skills through professional courses and certifications.
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {[
@@ -336,10 +390,14 @@ export default function AboutClientPage() {
                       className="bg-card rounded-xl p-8 border shadow-sm hover:shadow-md transition-all duration-300"
                       whileHover={{ y: -3 }}
                     >
-                      <h3 className="text-2xl font-bold mb-4">Personal Approach</h3>
+                      <h3 className="text-2xl font-bold mb-4">
+                        Personal Approach
+                      </h3>
                       <p className="text-muted-foreground mb-6">
-                        Beyond technical expertise, I bring a collaborative mindset and problem-solving approach to
-                        every project. I believe in clear communication and building strong professional relationships.
+                        Beyond technical expertise, I bring a collaborative
+                        mindset and problem-solving approach to every project. I
+                        believe in clear communication and building strong
+                        professional relationships.
                       </p>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
@@ -364,10 +422,18 @@ export default function AboutClientPage() {
                             key={trait.title}
                             className="bg-muted/50 rounded-lg p-4 hover:bg-muted/70 transition-colors duration-300"
                             whileHover={{ scale: 1.02 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 10,
+                            }}
                           >
-                            <h4 className="font-semibold mb-2">{trait.title}</h4>
-                            <p className="text-sm text-muted-foreground">{trait.desc}</p>
+                            <h4 className="font-heading font-semibold mb-2">
+                              {trait.title}
+                            </h4>
+                            <p className="text-sm text-muted-foreground">
+                              {trait.desc}
+                            </p>
                           </motion.div>
                         ))}
                       </div>
@@ -377,20 +443,34 @@ export default function AboutClientPage() {
                       className="bg-card rounded-xl p-8 border shadow-sm hover:shadow-md transition-all duration-300"
                       whileHover={{ y: -3 }}
                     >
-                      <h3 className="text-2xl font-bold mb-4">Interests & Hobbies</h3>
+                      <h3 className="text-2xl font-bold mb-4">
+                        Interests & Hobbies
+                      </h3>
                       <p className="text-muted-foreground mb-6">
-                        When I'm not optimizing mobile networks, you might find me engaged in these activities:
+                        When I'm not optimizing mobile networks, you might find
+                        me engaged in these activities:
                       </p>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {["Technology Trends", "Reading", "Travel", "Photography"].map((hobby, index) => (
+                        {[
+                          "Technology Trends",
+                          "Reading",
+                          "Travel",
+                          "Photography",
+                        ].map((hobby, index) => (
                           <motion.div
                             key={hobby}
                             className="text-center"
                             whileHover={{ y: -5 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 10,
+                            }}
                           >
                             <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-3 transition-colors duration-300 hover:bg-primary/20">
-                              <span className="text-2xl text-primary">{index + 1}</span>
+                              <span className="text-2xl text-primary">
+                                {index + 1}
+                              </span>
                             </div>
                             <p className="font-medium">{hobby}</p>
                           </motion.div>
@@ -403,17 +483,19 @@ export default function AboutClientPage() {
             </div>
           </div>
         </div>
-      </section>
-
+      </section>{" "}
       {/* Contact Info Section */}
-      <section className="bg-muted/30 py-20">
+      <section id="connect" className="bg-muted/30 py-20 scroll-mt-20">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Let's Connect</h2>
+              <h2 className="font-heading text-3xl font-bold mb-4">
+                Let's Connect
+              </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Interested in discussing mobile network optimization or telecommunications projects? Feel free to reach
-                out through any of these channels.
+                Interested in discussing mobile network optimization or
+                telecommunications projects? Feel free to reach out through any
+                of these channels.
               </p>
             </div>
 
@@ -425,15 +507,19 @@ export default function AboutClientPage() {
                 transition={{ duration: 0.5 }}
                 whileHover={{
                   y: -5,
-                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                  boxShadow:
+                    "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                 }}
                 className="bg-card rounded-xl p-6 border text-center transition-all duration-300"
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
                   <Mail className="h-6 w-6" />
                 </div>
-                <h3 className="font-semibold mb-2">Email</h3>
-                <a href={`mailto:${profile.email}`} className="text-primary hover:underline">
+                <h3 className="font-heading font-semibold mb-2">Email</h3>
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="text-primary hover:underline"
+                >
                   {profile.email}
                 </a>
               </motion.div>
@@ -445,14 +531,15 @@ export default function AboutClientPage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 whileHover={{
                   y: -5,
-                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                  boxShadow:
+                    "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                 }}
                 className="bg-card rounded-xl p-6 border text-center transition-all duration-300"
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
                   <MapPin className="h-6 w-6" />
                 </div>
-                <h3 className="font-semibold mb-2">Location</h3>
+                <h3 className="font-heading font-semibold mb-2">Location</h3>
                 <p>{profile.location}</p>
               </motion.div>
 
@@ -463,14 +550,15 @@ export default function AboutClientPage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 whileHover={{
                   y: -5,
-                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                  boxShadow:
+                    "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                 }}
                 className="bg-card rounded-xl p-6 border text-center transition-all duration-300"
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
                   <Linkedin className="h-6 w-6" />
                 </div>
-                <h3 className="font-semibold mb-2">LinkedIn</h3>
+                <h3 className="font-heading font-semibold mb-2">LinkedIn</h3>
                 <a
                   href={profile.socialLinks.linkedin}
                   target="_blank"
@@ -483,7 +571,11 @@ export default function AboutClientPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <Button asChild size="lg" className="rounded-full transition-transform duration-300 hover:scale-105">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full transition-transform duration-300 hover:scale-105"
+              >
                 <a href="/contact">
                   Contact Me <Mail className="ml-2 h-4 w-4" />
                 </a>
@@ -493,5 +585,5 @@ export default function AboutClientPage() {
         </div>
       </section>
     </main>
-  )
+  );
 }

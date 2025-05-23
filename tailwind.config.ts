@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: ["class"],
@@ -161,9 +161,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
-        mono: ["var(--font-jetbrains-mono)", "monospace"],
+        sans: ["var(--font-inter)"],
+        heading: ["var(--font-playfair)"],
+        mono: ["var(--font-jetbrains-mono)"],
       },
       // Accessibility-focused spacing
       spacing: {
@@ -231,10 +231,10 @@ const config: Config = {
           "min-height": theme("spacing.touch-target"),
           "min-width": theme("spacing.touch-target"),
         },
-      }
-      addUtilities(newUtilities)
+      };
+      addUtilities(newUtilities);
     },
   ],
-}
+};
 
-export default config
+export default config;

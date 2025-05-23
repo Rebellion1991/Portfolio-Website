@@ -1,90 +1,101 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { getCourses } from "@/lib/content"
-import { BookOpenIcon, AwardIcon, CalendarIcon, BarChart3Icon, SearchIcon, FilterIcon, CheckIcon } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { CourseCard } from "@/components/course-card"
+import { useState, useEffect, useMemo } from "react";
+import { motion } from "framer-motion";
+import { getCourses } from "@/lib/content";
+import type { Course } from "@/lib/types";
+import {
+  BookOpenIcon,
+  AwardIcon,
+  CalendarIcon,
+  BarChart3Icon,
+  SearchIcon,
+  FilterIcon,
+  CheckIcon,
+} from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { CourseCard } from "@/components/course-card";
 
 export default function CoursesPageClient() {
-  const [courses, setCourses] = useState([])
-  const [filteredCourses, setFilteredCourses] = useState([])
-  const [categories, setCategories] = useState([])
-  const [providers, setProviders] = useState([])
-  const [searchTerm, setSearchTerm] = useState("")
-  const [activeFilters, setActiveFilters] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [activeView, setActiveView] = useState("grid") // grid or list
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [providers, setProviders] = useState<string[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeView, setActiveView] = useState("grid"); // grid or list
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const coursesData = await getCourses()
-        setCourses(coursesData)
-        setFilteredCourses(coursesData)
+        const coursesData = await getCourses();
+        setCourses(coursesData);
+        setFilteredCourses(coursesData);
 
         // Extract unique categories and providers
-        const uniqueCategories = Array.from(new Set(coursesData.map((course) => course.category)))
-        const uniqueProviders = Array.from(new Set(coursesData.map((course) => course.provider)))
+        const uniqueCategories = Array.from(
+          new Set(coursesData.map((course) => course.category))
+        );
+        const uniqueProviders = Array.from(
+          new Set(coursesData.map((course) => course.provider))
+        );
 
-        setCategories(uniqueCategories)
-        setProviders(uniqueProviders)
-        setIsLoading(false)
+        setCategories(uniqueCategories);
+        setProviders(uniqueProviders);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching courses:", error)
-        setIsLoading(false)
+        console.error("Error fetching courses:", error);
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    // Filter courses based on search term and active filters
-    let filtered = [...courses]
-
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase()
-      filtered = filtered.filter(
-        (course) =>
+    const term = searchTerm.toLowerCase();
+    const filtered = courses.filter(
+      (course) =>
+        (term === "" ||
           course.title.toLowerCase().includes(term) ||
           course.provider.toLowerCase().includes(term) ||
           course.description?.toLowerCase().includes(term) ||
-          course.skills.some((skill) => skill.toLowerCase().includes(term)) ||
-          course.category.toLowerCase().includes(term),
-      )
-    }
+          course.skills.some((skill: string) =>
+            skill.toLowerCase().includes(term)
+          ) ||
+          course.category.toLowerCase().includes(term)) &&
+        (activeFilters.length === 0 ||
+          activeFilters.includes(course.category) ||
+          activeFilters.includes(course.provider))
+    );
+    setFilteredCourses(filtered);
+  }, [courses, searchTerm, activeFilters]);
 
-    if (activeFilters.length > 0) {
-      filtered = filtered.filter(
-        (course) => activeFilters.includes(course.category) || activeFilters.includes(course.provider),
-      )
-    }
-
-    setFilteredCourses(filtered)
-  }, [searchTerm, activeFilters, courses])
-
-  const toggleFilter = (filter) => {
-    setActiveFilters((prev) => (prev.includes(filter) ? prev.filter((f) => f !== filter) : [...prev, filter]))
-  }
+  const toggleFilter = (filter: string) => {
+    setActiveFilters((prev) =>
+      prev.includes(filter)
+        ? prev.filter((f) => f !== filter)
+        : [...prev, filter]
+    );
+  };
 
   // Calculate statistics
-  const totalCourses = courses.length
-  const totalProviders = providers.length
-  const totalCategories = categories.length
-  const latestCourse = courses[0] // Courses are already sorted by date
+  const totalCourses = courses.length;
+  const totalProviders = providers.length;
+  const totalCategories = categories.length;
+  const latestCourse = courses[0]; // Courses are already sorted by date
 
   // Group courses by provider for display
-  const coursesByProvider = {}
+  const coursesByProvider: Record<string, Course[]> = {};
   filteredCourses.forEach((course) => {
     if (!coursesByProvider[course.provider]) {
-      coursesByProvider[course.provider] = []
+      coursesByProvider[course.provider] = [];
     }
-    coursesByProvider[course.provider].push(course)
-  })
+    coursesByProvider[course.provider].push(course);
+  });
 
   if (isLoading) {
     return (
@@ -95,7 +106,7 @@ export default function CoursesPageClient() {
           <div className="h-3 bg-muted rounded w-32"></div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -105,14 +116,19 @@ export default function CoursesPageClient() {
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-6">
                 <BookOpenIcon className="h-8 w-8" />
               </div>
-              <h1 className="mb-6">Courses & Certifications</h1>
+              <h1 className="font-heading mb-6">Courses & Certifications</h1>
               <p className="text-xl text-white/80">
-                My professional development journey through courses and certifications in telecommunications,
-                networking, and related fields.
+                My professional development journey through courses and
+                certifications in telecommunications, networking, and related
+                fields.
               </p>
             </motion.div>
           </div>
@@ -145,7 +161,9 @@ export default function CoursesPageClient() {
             >
               <AwardIcon className="h-10 w-10 text-primary" />
               <div>
-                <p className="text-sm text-muted-foreground">Course Providers</p>
+                <p className="text-sm text-muted-foreground">
+                  Course Providers
+                </p>
                 <h3 className="text-3xl font-bold">{totalProviders}</h3>
               </div>
             </motion.div>
@@ -158,7 +176,9 @@ export default function CoursesPageClient() {
             >
               <BarChart3Icon className="h-10 w-10 text-primary" />
               <div>
-                <p className="text-sm text-muted-foreground">Skill Categories</p>
+                <p className="text-sm text-muted-foreground">
+                  Skill Categories
+                </p>
                 <h3 className="text-3xl font-bold">{totalCategories}</h3>
               </div>
             </motion.div>
@@ -171,8 +191,12 @@ export default function CoursesPageClient() {
             >
               <CalendarIcon className="h-10 w-10 text-primary" />
               <div>
-                <p className="text-sm text-muted-foreground">Latest Certification</p>
-                <h3 className="text-xl font-bold truncate">{latestCourse?.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  Latest Certification
+                </p>
+                <h3 className="text-xl font-bold max-w-[200px] truncate hover:text-clip hover:overflow-visible hover:whitespace-normal">
+                  {latestCourse?.title}
+                </h3>
               </div>
             </motion.div>
           </div>
@@ -205,10 +229,14 @@ export default function CoursesPageClient() {
                   key={category}
                   onClick={() => toggleFilter(category)}
                   className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors flex items-center ${
-                    activeFilters.includes(category) ? "bg-primary text-white" : "bg-muted hover:bg-muted-foreground/10"
+                    activeFilters.includes(category)
+                      ? "bg-primary text-white"
+                      : "bg-muted hover:bg-muted-foreground/10"
                   }`}
                 >
-                  {activeFilters.includes(category) && <CheckIcon className="h-3 w-3 mr-1" />}
+                  {activeFilters.includes(category) && (
+                    <CheckIcon className="h-3 w-3 mr-1" />
+                  )}
                   {category}
                 </button>
               ))}
@@ -218,10 +246,14 @@ export default function CoursesPageClient() {
                   key={provider}
                   onClick={() => toggleFilter(provider)}
                   className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors flex items-center ${
-                    activeFilters.includes(provider) ? "bg-primary text-white" : "bg-muted hover:bg-muted-foreground/10"
+                    activeFilters.includes(provider)
+                      ? "bg-primary text-white"
+                      : "bg-muted hover:bg-muted-foreground/10"
                   }`}
                 >
-                  {activeFilters.includes(provider) && <CheckIcon className="h-3 w-3 mr-1" />}
+                  {activeFilters.includes(provider) && (
+                    <CheckIcon className="h-3 w-3 mr-1" />
+                  )}
                   {provider}
                 </button>
               ))}
@@ -239,7 +271,9 @@ export default function CoursesPageClient() {
             <div className="flex gap-2">
               <button
                 onClick={() => setActiveView("grid")}
-                className={`p-2 rounded-md ${activeView === "grid" ? "bg-primary text-white" : "bg-muted"}`}
+                className={`p-2 rounded-md ${
+                  activeView === "grid" ? "bg-primary text-white" : "bg-muted"
+                }`}
                 aria-label="Grid view"
               >
                 <svg
@@ -261,7 +295,9 @@ export default function CoursesPageClient() {
               </button>
               <button
                 onClick={() => setActiveView("list")}
-                className={`p-2 rounded-md ${activeView === "list" ? "bg-primary text-white" : "bg-muted"}`}
+                className={`p-2 rounded-md ${
+                  activeView === "list" ? "bg-primary text-white" : "bg-muted"
+                }`}
                 aria-label="List view"
               >
                 <svg
@@ -311,11 +347,13 @@ export default function CoursesPageClient() {
                 <SearchIcon className="h-8 w-8 text-muted-foreground" />
               </div>
               <h3 className="text-xl font-semibold mb-2">No courses found</h3>
-              <p className="text-muted-foreground mb-6">Try adjusting your search or filters</p>
+              <p className="text-muted-foreground mb-6">
+                Try adjusting your search or filters
+              </p>
               <Button
                 onClick={() => {
-                  setSearchTerm("")
-                  setActiveFilters([])
+                  setSearchTerm("");
+                  setActiveFilters([]);
                 }}
                 variant="outline"
                 className="rounded-full"
@@ -325,91 +363,99 @@ export default function CoursesPageClient() {
             </div>
           ) : (
             <div className="space-y-16">
-              {Object.entries(coursesByProvider).map(([provider, providerCourses]) => (
-                <motion.div
-                  key={provider}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <h2 className="text-2xl font-bold mb-6 pb-2 border-b flex items-center">
-                    <AwardIcon className="h-6 w-6 mr-2 text-primary" />
-                    {provider}
-                  </h2>
+              {Object.entries(coursesByProvider).map(
+                ([provider, providerCourses]) => (
+                  <motion.div key={provider}>
+                    <h2 className="text-2xl font-heading font-bold mb-6 pb-2 border-b flex items-center">
+                      <AwardIcon className="h-6 w-6 mr-2 text-primary" />
+                      {provider}
+                    </h2>
 
-                  {activeView === "grid" ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {providerCourses.map((course, index) => (
-                        <motion.div
-                          key={course.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                        >
-                          <CourseCard course={course} />
-                        </motion.div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="space-y-4">
-                      {providerCourses.map((course, index) => (
-                        <motion.div
-                          key={course.id}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          className="bg-card rounded-xl p-6 border hover:shadow-md transition-all duration-300"
-                        >
-                          <div className="flex flex-col md:flex-row gap-6">
-                            <div className="md:w-2/3">
-                              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                                {course.title}
-                              </h3>
-                              <div className="flex items-center text-muted-foreground mb-4">
-                                <CalendarIcon className="h-4 w-4 mr-2" />
-                                <span>
-                                  Completed{" "}
-                                  {new Date(course.completionDate).toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "long",
-                                  })}
-                                </span>
-                              </div>
-                              {course.description && <p className="text-muted-foreground mb-4">{course.description}</p>}
-                            </div>
-                            <div className="md:w-1/3">
-                              <div className="mb-4">
-                                <h4 className="text-sm font-semibold mb-2">Skills Gained:</h4>
-                                <div className="flex flex-wrap gap-2">
-                                  {course.skills.map((skill, i) => (
-                                    <Badge key={i} variant="secondary" className="text-xs">
-                                      {skill}
-                                    </Badge>
-                                  ))}
+                    {activeView === "grid" ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {providerCourses.map((course, index) => (
+                          <motion.div
+                            key={course.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                          >
+                            <CourseCard course={course} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="space-y-4">
+                        {providerCourses.map((course, index) => (
+                          <motion.div
+                            key={course.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className="bg-card rounded-xl p-6 border hover:shadow-md transition-all duration-300"
+                          >
+                            <div className="flex flex-col md:flex-row gap-6">
+                              <div className="md:w-2/3">
+                                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                                  {course.title}
+                                </h3>
+                                <div className="flex items-center text-muted-foreground mb-4">
+                                  <CalendarIcon className="h-4 w-4 mr-2" />
+                                  <span>
+                                    Completed{" "}
+                                    {new Date(
+                                      course.completionDate
+                                    ).toLocaleDateString("en-US", {
+                                      year: "numeric",
+                                      month: "long",
+                                    })}
+                                  </span>
                                 </div>
+                                {course.description && (
+                                  <p className="text-muted-foreground mb-4">
+                                    {course.description}
+                                  </p>
+                                )}
                               </div>
-                              {course.certificateUrl && (
-                                <a
-                                  href={course.certificateUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center text-sm text-primary hover:underline"
-                                >
-                                  <AwardIcon className="mr-2 h-4 w-4" />
-                                  View Certificate
-                                </a>
-                              )}
+                              <div className="md:w-1/3">
+                                <div className="mb-4">
+                                  <h4 className="text-sm font-semibold mb-2">
+                                    Skills Gained:
+                                  </h4>
+                                  <div className="flex flex-wrap gap-2">
+                                    {course.skills.map((skill, i) => (
+                                      <Badge
+                                        key={i}
+                                        variant="secondary"
+                                        className="text-xs"
+                                      >
+                                        {skill}
+                                      </Badge>
+                                    ))}
+                                  </div>
+                                </div>
+                                {course.certificateUrl && (
+                                  <a
+                                    href={course.certificateUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center text-sm text-primary hover:underline"
+                                  >
+                                    <AwardIcon className="mr-2 h-4 w-4" />
+                                    View Certificate
+                                  </a>
+                                )}
+                              </div>
                             </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              ))}
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+                  </motion.div>
+                )
+              )}
             </div>
           )}
         </div>
@@ -426,11 +472,14 @@ export default function CoursesPageClient() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl font-bold mb-4">My Learning Philosophy</h2>
+              <h2 className="text-3xl font-heading font-bold mb-4">
+                My Learning Philosophy
+              </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                I believe in continuous learning and staying updated with the latest advancements in telecommunications
-                and network technologies. My approach to professional development combines formal education with
-                hands-on experience.
+                I believe in continuous learning and staying updated with the
+                latest advancements in telecommunications and network
+                technologies. My approach to professional development combines
+                formal education with hands-on experience.
               </p>
             </motion.div>
 
@@ -444,12 +493,14 @@ export default function CoursesPageClient() {
                 },
                 {
                   title: "Practical Application",
-                  description: "I apply theoretical knowledge to real-world scenarios to solidify understanding.",
+                  description:
+                    "I apply theoretical knowledge to real-world scenarios to solidify understanding.",
                   icon: BarChart3Icon,
                 },
                 {
                   title: "Knowledge Sharing",
-                  description: "I believe in sharing knowledge with colleagues and contributing to the community.",
+                  description:
+                    "I believe in sharing knowledge with colleagues and contributing to the community.",
                   icon: AwardIcon,
                 },
               ].map((item, index) => (
@@ -473,5 +524,5 @@ export default function CoursesPageClient() {
         </div>
       </section>
     </main>
-  )
+  );
 }

@@ -1,9 +1,10 @@
 {
   "name": "Ahmed Shenawy",
-  "title": "Senior Roaming Engineer",
-  "summary": "With a background in mobile core network and roaming services, I specialize in fine-tuning mobile services and ensuring top-tier performance. I'm dedicated to delivering excellence in telecommunications, actively contributing to industry standards, and staying at the forefront of technological advancements. My goal is to optimize mobile core networks and provide subscribers with seamless, high-quality services.",
-  "location": "Germany",
-  "email": "ahmed@shenawy.xyz",
+  "title": "Senior Roaming & Core Network Specialist",
+  "summary": "Telecommunications expert specializing in mobile core networks and roaming services, with a passion for blockchain and Web3 technologies. Dedicated to optimizing network solutions and exploring innovative decentralized systems.",
+  "professionalBackground": "Experienced telecommunications professional with deep expertise in mobile core networks, roaming services, and emerging technologies. My career spans the evolution of mobile networks from 2G to 5G, with specialized knowledge in VoLTE, IMS, and roaming implementations. I have successfully architected and optimized mobile network solutions across multiple generations of technology, ensuring seamless integration and optimal performance. Additionally, I am actively engaged in blockchain technology, developing innovative solutions and exploring the potential of Web3 and decentralized systems.",
+  "location": "Cyprus",
+  "email": "contact@shenawy.xyz",
   "website": "https://shenawy.xyz",
   "socialLinks": {
     "linkedin": "https://www.linkedin.com/in/ahmedshenawy/"
@@ -12,35 +13,68 @@
     {
       "category": "Core Network Technologies",
       "items": [
+        "4G/LTE Architecture & Protocols",
+        "VoLTE & IMS Network Services",
+        "SS7 & SIGTRAN Protocol Stack",
         "Mobile Core Services",
-        "SS7 Protocol Stack",
-        "SIGTRAN Protocol Stack",
-        "Roaming Services",
-        "IMS Services",
+        "SIP Protocol & Call Flows",
+        "2G/3G/4G Voice Services",
         "5G SDA Products"
       ]
     },
     {
-      "category": "Testing & Debugging",
+      "category": "Roaming & Integration",
       "items": [
-        "Mobile Terminal Testing & Debugging",
-        "QxDM, QPST and QCAT",
+        "Roaming TADIG & IREG Testing",
+        "GTPv2 Protocol & Call Flows",
+        "VoLTE Roaming Implementation",
+        "TAP & NRTRDE Processing",
+        "ISUP Protocol Integration",
+        "GSM Association Standards"
+      ]
+    },
+    {
+      "category": "Testing & Quality Assurance",
+      "items": [
+        "Mobile Terminal Testing",
+        "QxDM, QPST and QCAT Tools",
+        "Network Performance Testing",
         "Regression Testing",
-        "IREG Testing",
-        "ATP Testing Operations"
+        "ATP Testing Operations",
+        "Call Flow Analysis"
       ]
     },
     {
       "category": "Business Intelligence & Analytics",
-      "items": ["QlikSense", "Microsoft Power BI", "Data Analytics", "Performance Metrics & KPIs"]
+      "items": [
+        "Qlik Sense Dashboard Development",
+        "Microsoft Power BI & DAX",
+        "Data Analytics & Visualization",
+        "Performance Metrics & KPIs",
+        "Network Performance Analysis",
+        "Business Process Optimization"
+      ]
     },
     {
-      "category": "Roaming & Standards",
+      "category": "System & Automation",
       "items": [
-        "Roaming TADIG & IREG",
-        "TAP & NRTRDE Files",
-        "GSM Association Standards",
-        "Product Lifecycle Management"
+        "Bash Scripting & Automation",
+        "Linux System Administration",
+        "Oracle SQL & Database Management",
+        "Shell Programming",
+        "Network Troubleshooting",
+        "System Integration"
+      ]
+    },
+    {
+      "category": "Blockchain & DeFi",
+      "items": [
+        "Web3 Development",
+        "Smart Contracts",
+        "DApps Development",
+        "Decentralized Finance",
+        "Cryptocurrency Regulation",
+        "Blockchain Architecture"
       ]
     }
   ]

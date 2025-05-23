@@ -1,53 +1,62 @@
-"use client"
-import Link from "next/link"
-import { getProfile, getFeaturedProjects, getExperiences } from "@/lib/content"
-import { PersonJsonLd, WebsiteJsonLd } from "@/components/json-ld"
-import { OptimizedImage } from "@/components/optimized-image"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, ExternalLink, Github, Linkedin, Mail } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { motion } from "framer-motion" // Import motion from framer-motion
-import { useEffect, useState } from "react"
+"use client";
+import Link from "next/link";
+import { getProfile, getFeaturedProjects, getExperiences } from "@/lib/content";
+import type { Profile, Project, Experience } from "@/lib/types";
+import { PersonJsonLd, WebsiteJsonLd } from "@/components/json-ld";
+import { OptimizedImage } from "@/components/optimized-image";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, ExternalLink, Github, Linkedin, Mail } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion"; // Import motion from framer-motion
+import { useEffect, useState } from "react";
 
 // Helper function to format date range
 function formatDateRange(startDate: string, endDate: string | null): string {
-  const start = new Date(startDate)
-  const startFormatted = start.toLocaleDateString("en-US", { month: "short", year: "numeric" })
+  const start = new Date(startDate);
+  const startFormatted = start.toLocaleDateString("en-US", {
+    month: "short",
+    year: "numeric",
+  });
 
   if (!endDate) {
-    return `${startFormatted} - Present`
+    return `${startFormatted} - Present`;
   }
 
-  const end = new Date(endDate)
-  const endFormatted = end.toLocaleDateString("en-US", { month: "short", year: "numeric" })
+  const end = new Date(endDate);
+  const endFormatted = end.toLocaleDateString("en-US", {
+    month: "short",
+    year: "numeric",
+  });
 
-  return `${startFormatted} - ${endFormatted}`
+  return `${startFormatted} - ${endFormatted}`;
 }
 
 export default function ClientPage() {
-  const [profile, setProfile] = useState(null)
-  const [featuredProjects, setFeaturedProjects] = useState(null)
-  const [experiences, setExperiences] = useState(null)
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [featuredProjects, setFeaturedProjects] = useState<Project[] | null>(
+    null
+  );
+  const [experiences, setExperiences] = useState<Experience[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const profileData = await getProfile()
-      const featuredProjectsData = await getFeaturedProjects()
-      const experiencesData = await getExperiences()
+      const profileData = await getProfile();
+      const featuredProjectsData = await getFeaturedProjects();
+      const experiencesData = await getExperiences();
 
-      setProfile(profileData)
-      setFeaturedProjects(featuredProjectsData)
-      setExperiences(experiencesData)
-    }
+      setProfile(profileData);
+      setFeaturedProjects(featuredProjectsData);
+      setExperiences(experiencesData);
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   if (!profile || !featuredProjects || !experiences) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
-  const latestExperience = experiences[0]
+  const latestExperience = experiences[0];
 
   return (
     <>
@@ -125,7 +134,9 @@ export default function ClientPage() {
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <div className="ml-auto font-mono text-xs text-white/70">network-specialist.sh</div>
+                  <div className="ml-auto font-mono text-xs text-white/70">
+                    network-specialist.sh
+                  </div>
                 </div>
                 <div className="font-mono text-sm text-white/90 space-y-2">
                   <div className="flex">
@@ -139,11 +150,14 @@ export default function ClientPage() {
                   </div>
                   <div className="pl-4 flex flex-wrap gap-2">
                     {profile.skills.flatMap((category) =>
-                      category.items.slice(0, 3).map((skill, i) => (
-                        <span key={i} className="bg-white/10 px-2 py-1 rounded text-xs">
+                      category.items.slice(0, 3).map((skill) => (
+                        <span
+                          key={`${category.category}-${skill}`}
+                          className="bg-white/10 px-2 py-1 rounded text-xs"
+                        >
                           {skill}
                         </span>
-                      )),
+                      ))
                     )}
                   </div>
                   <div className="flex">
@@ -168,10 +182,14 @@ export default function ClientPage() {
             <div>
               <h2 className="mb-4">Featured Projects</h2>
               <p className="text-muted-foreground max-w-2xl">
-                Explore some of my notable work in mobile network optimization and telecommunications.
+                Explore some of my notable work in mobile network optimization
+                and telecommunications.
               </p>
             </div>
-            <Link href="/projects" className="group mt-4 md:mt-0 inline-flex items-center text-primary font-medium">
+            <Link
+              href="/projects"
+              className="group mt-4 md:mt-0 inline-flex items-center text-primary font-medium"
+            >
               View all projects
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
@@ -190,7 +208,10 @@ export default function ClientPage() {
                 <div className="card-hover bg-card rounded-xl overflow-hidden border">
                   <div className="relative h-56 w-full overflow-hidden">
                     <OptimizedImage
-                      src={project.imageUrl || "/placeholder.svg?height=400&width=600"}
+                      src={
+                        project.imageUrl ||
+                        "/placeholder.svg?height=400&width=600"
+                      }
                       alt={project.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -201,10 +222,16 @@ export default function ClientPage() {
                     <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
+                    <p className="text-muted-foreground mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.slice(0, 3).map((tech, index) => (
-                        <Badge key={index} variant="secondary" className="font-mono text-xs">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <Badge
+                          key={`${project.id}-${tech}`}
+                          variant="secondary"
+                          className="font-mono text-xs"
+                        >
                           {tech}
                         </Badge>
                       ))}
@@ -254,19 +281,33 @@ export default function ClientPage() {
                 className="relative z-10 mb-12"
               >
                 <div
-                  className={`flex flex-col md:flex-row items-start gap-4 md:gap-8 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+                  className={`flex flex-col md:flex-row items-start gap-4 md:gap-8 ${
+                    index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  }`}
                 >
                   {/* Timeline dot */}
                   <div className="hidden md:block w-4 h-4 rounded-full bg-primary absolute left-1/2 top-6 transform -translate-x-1/2"></div>
 
                   {/* Content column */}
-                  <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:text-right" : ""}`}>
+                  <div
+                    className={`w-full md:w-1/2 ${
+                      index % 2 === 0 ? "md:text-right" : ""
+                    }`}
+                  >
                     <div className="bg-card rounded-xl p-6 border shadow-sm card-hover">
                       <div className="mb-4">
-                        <Badge variant="outline" className="text-sm font-medium mb-2">
-                          {formatDateRange(experience.startDate, experience.endDate)}
+                        <Badge
+                          variant="outline"
+                          className="text-sm font-medium mb-2"
+                        >
+                          {formatDateRange(
+                            experience.startDate,
+                            experience.endDate
+                          )}
                         </Badge>
-                        <h3 className="text-xl font-bold">{experience.title}</h3>
+                        <h3 className="text-xl font-bold">
+                          {experience.title}
+                        </h3>
                         <p className="text-muted-foreground">
                           {experience.company} • {experience.location}
                         </p>
@@ -275,8 +316,12 @@ export default function ClientPage() {
                       <p className="mb-4">{experience.description}</p>
 
                       <div className="flex flex-wrap gap-2 mt-4">
-                        {experience.technologies.slice(0, 3).map((tech, i) => (
-                          <Badge key={i} variant="secondary" className="text-xs">
+                        {experience.technologies.slice(0, 3).map((tech) => (
+                          <Badge
+                            key={`${experience.id}-${tech}`}
+                            variant="secondary"
+                            className="text-xs"
+                          >
                             {tech}
                           </Badge>
                         ))}
@@ -312,11 +357,16 @@ export default function ClientPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="mb-6">Let's Work Together</h2>
             <p className="text-xl text-white/80 mb-8">
-              Looking for expertise in mobile network optimization or telecommunications? I'm open to discussing how I
-              can help with your projects.
+              Looking for expertise in mobile network optimization or
+              telecommunications? I'm open to discussing how I can help with
+              your projects.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="rounded-full bg-white text-brand-900 hover:bg-white/90">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-white text-brand-900 hover:bg-white/90"
+              >
                 <Link href="/contact">
                   Get in Touch <Mail className="ml-2 h-4 w-4" />
                 </Link>
@@ -336,5 +386,5 @@ export default function ClientPage() {
         </div>
       </section>
     </>
-  )
+  );
 }

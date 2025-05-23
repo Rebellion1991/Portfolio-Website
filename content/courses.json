@@ -4,7 +4,7 @@
     "title": "MASTERING WEB3 | University of Nicosia",
     "provider": "University of Nicosia",
     "certificateUrl": "https://blockstream.info/tx/8c6cfc297dec06ae2eebcd434ffac3dc1bb0ccc733bed835bfd9b262116f40fd",
-    "completionDate": "2023-05-15",
+    "completionDate": "2025-05-23",
     "description": "Comprehensive course covering Web3, Blockchain Technology, DeFi, and Tokenization concepts.",
     "skills": ["WEB3", "Blockchain Technology", "DeFi", "Tokenization"],
     "category": "Blockchain"
@@ -26,7 +26,12 @@
     "certificateUrl": "https://www.udemy.com/certificate/UC-1cb5de88-8df6-4690-a51d-c1fac2c5bd1d/",
     "completionDate": "2022-11-20",
     "description": "In-depth training on IMS Network Architecture, VoLTE Call Flows, VoLTE Performance Metrics, and SIP Protocol.",
-    "skills": ["IMS Network Architecture", "VoLTE Call Flows", "VoLTE Performance Metrics", "SIP Protocol"],
+    "skills": [
+      "IMS Network Architecture",
+      "VoLTE Call Flows",
+      "VoLTE Performance Metrics",
+      "SIP Protocol"
+    ],
     "category": "VoLTE & IMS"
   },
   {
@@ -36,7 +41,12 @@
     "certificateUrl": "https://www.udemy.com/certificate/UC-c903d203-d233-4566-a44d-52f878e296b0/",
     "completionDate": "2022-09-10",
     "description": "Comprehensive coverage of Voice Call Flows, ISUP Protocol, and SIP Protocol across multiple generations.",
-    "skills": ["Voice Call Flows", "ISUP Protocol", "SIP Protocol", "2G/3G/4G Networks"],
+    "skills": [
+      "Voice Call Flows",
+      "ISUP Protocol",
+      "SIP Protocol",
+      "2G/3G/4G Networks"
+    ],
     "category": "Voice Services"
   },
   {
@@ -46,7 +56,12 @@
     "certificateUrl": "https://www.udemy.com/certificate/UC-5282ef1d-b566-4961-b298-e8a887873979/",
     "completionDate": "2022-07-25",
     "description": "Advanced training on SS7 Protocol Stack and SIGTRAN Protocol Stack technologies.",
-    "skills": ["SS7 Protocol Stack", "SIGTRAN Protocol Stack", "Signaling Flows", "Network Architecture"],
+    "skills": [
+      "SS7 Protocol Stack",
+      "SIGTRAN Protocol Stack",
+      "Signaling Flows",
+      "Network Architecture"
+    ],
     "category": "Signaling Protocols"
   },
   {
@@ -56,7 +71,12 @@
     "certificateUrl": "https://www.udemy.com/certificate/UC-0a112f03-23af-45a7-bda9-a6d23c694ec8/",
     "completionDate": "2022-05-15",
     "description": "Specialized course on SIP Protocol, SIP Diagrams, and Call Flows in cellular networks.",
-    "skills": ["SIP Protocol", "SIP Diagrams", "Call Flows", "Cellular Networks"],
+    "skills": [
+      "SIP Protocol",
+      "SIP Diagrams",
+      "Call Flows",
+      "Cellular Networks"
+    ],
     "category": "Protocols"
   },
   {
@@ -66,7 +86,12 @@
     "certificateUrl": "https://www.udemy.com/certificate/UC-2217c9ef-427a-43ce-9a31-6838a2cb0ddf/",
     "completionDate": "2021-12-10",
     "description": "Business Intelligence training focused on creating dashboards and data visualization using Qlik Sense.",
-    "skills": ["Business Intelligence", "Qlik Sense Dashboards", "Data Visualization", "Analytics"],
+    "skills": [
+      "Business Intelligence",
+      "Qlik Sense Dashboards",
+      "Data Visualization",
+      "Analytics"
+    ],
     "category": "Business Intelligence"
   },
   {
@@ -86,7 +111,12 @@
     "certificateUrl": "https://www.udemy.com/certificate/UC-c8a25e1a-e1d9-4a06-a387-dbdc55a4344d/",
     "completionDate": "2021-08-20",
     "description": "Comprehensive training on Shell Scripts and UNIX Bash programming for automation and system administration.",
-    "skills": ["Shell Scripts", "UNIX Bash", "Automation", "System Administration"],
+    "skills": [
+      "Shell Scripts",
+      "UNIX Bash",
+      "Automation",
+      "System Administration"
+    ],
     "category": "Programming"
   },
   {
@@ -95,7 +125,12 @@
     "provider": "PMI",
     "completionDate": "2021-06-15",
     "description": "Project management training focused on Agile methodologies and problem-solving techniques.",
-    "skills": ["Project Management", "Agile Methodologies", "Problem Solving", "Team Collaboration"],
+    "skills": [
+      "Project Management",
+      "Agile Methodologies",
+      "Problem Solving",
+      "Team Collaboration"
+    ],
     "category": "Project Management"
   },
   {
@@ -104,7 +139,125 @@
     "provider": "CompTIA",
     "completionDate": "2020-12-01",
     "description": "Foundational IT certification covering software troubleshooting, security, and virtualization.",
-    "skills": ["Software Troubleshooting", "Security", "Virtualization", "Hardware Support"],
+    "skills": [
+      "Software Troubleshooting",
+      "Security",
+      "Virtualization",
+      "Hardware Support"
+    ],
     "category": "IT Fundamentals"
+  },
+  {
+    "id": "course-12",
+    "title": "4G LTE: Technology, Architecture and Protocols",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-77a3209b-1bcd-4c03-abe7-b331aa48d1fc/",
+    "completionDate": "2022-10-15",
+    "description": "Deep dive into LTE technology, covering network architecture, protocols, and performance optimization.",
+    "skills": [
+      "LTE Technology",
+      "Network Architecture",
+      "4G Protocols",
+      "Performance Optimization"
+    ],
+    "category": "Mobile Networks"
+  },
+  {
+    "id": "course-13",
+    "title": "Signaling SS7 in Mobile Cellular wireless Networks",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-5d489d23-5a3c-49a8-a622-2ed843b7f94d/",
+    "completionDate": "2021-12-15",
+    "description": "Comprehensive coverage of SS7 signaling in mobile networks, focusing on protocols and network design.",
+    "skills": [
+      "SS7 Signaling",
+      "Mobile Networks",
+      "Protocol Design",
+      "Network Architecture"
+    ],
+    "category": "Signaling Protocols"
+  },
+  {
+    "id": "course-14",
+    "title": "Introduction to Digital Currencies",
+    "provider": "University of Nicosia",
+    "certificateUrl": "https://www.unic.ac.cy/blockchain/free-mooc/",
+    "completionDate": "2020-04-15",
+    "description": "Foundation course in digital currencies, blockchain technology, and cryptocurrency ecosystems.",
+    "skills": [
+      "Digital Currencies",
+      "Blockchain",
+      "Cryptocurrency",
+      "Smart Contracts"
+    ],
+    "category": "Blockchain"
+  },
+  {
+    "id": "course-15",
+    "title": "Ethereum: Building Blockchain DApps",
+    "provider": "LinkedIn",
+    "completionDate": "2019-02-15",
+    "description": "Hands-on course in developing decentralized applications on the Ethereum blockchain.",
+    "skills": ["Ethereum", "DApp Development", "Smart Contracts", "Blockchain"],
+    "category": "Blockchain"
+  },
+  {
+    "id": "course-16",
+    "title": "Blockchain: Beyond the Basics",
+    "provider": "NASBA",
+    "certificateUrl": "https://www.nasba.org/credential/AfCJNwhnzG2fxd6tBG9SmZS4fYF1",
+    "completionDate": "2017-11-15",
+    "description": "Advanced blockchain concepts and applications in business contexts.",
+    "skills": [
+      "Advanced Blockchain",
+      "Business Applications",
+      "Decentralization",
+      "Enterprise Solutions"
+    ],
+    "category": "Blockchain"
+  },
+  {
+    "id": "course-17",
+    "title": "Blockchain Basics",
+    "provider": "NASBA",
+    "certificateUrl": "https://www.nasba.org/credential/ASw4BH_osCKPkxPjgmgEXjZENnUh",
+    "completionDate": "2017-07-15",
+    "description": "Introduction to blockchain technology fundamentals and use cases.",
+    "skills": [
+      "Blockchain Fundamentals",
+      "Distributed Ledger",
+      "Decentralization",
+      "Cryptography"
+    ],
+    "category": "Blockchain"
+  },
+  {
+    "id": "course-18",
+    "title": "TOEFL iBT",
+    "provider": "ETS",
+    "certificateUrl": "https://www.ets.org/toefl/test-takers/ibt/scores/understanding.html",
+    "completionDate": "2013-01-15",
+    "description": "English language proficiency certification for academic and professional purposes.",
+    "skills": [
+      "English Proficiency",
+      "Academic English",
+      "Business Communication",
+      "Technical Writing"
+    ],
+    "category": "Language"
+  },
+  {
+    "id": "course-19",
+    "title": "Introduction to Oracle SQL",
+    "provider": "AAST Training Services",
+    "completionDate": "2012-06-15",
+    "description": "Fundamentals of Oracle SQL and database management.",
+    "skills": [
+      "Oracle SQL",
+      "Database Management",
+      "Query Optimization",
+      "Data Manipulation"
+    ],
+    "category": "Database"
   }
 ]

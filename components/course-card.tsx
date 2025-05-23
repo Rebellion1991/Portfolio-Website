@@ -1,35 +1,50 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import type { Course } from "@/lib/types"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { CalendarIcon, CheckCircle2Icon, ExternalLinkIcon } from "lucide-react"
+import { motion } from "framer-motion";
+import type { Course } from "@/lib/types";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { CalendarIcon, CheckCircle2Icon, ExternalLinkIcon } from "lucide-react";
 
 interface CourseCardProps {
-  course: Course
+  course: Course;
 }
 
 export function CourseCard({ course }: CourseCardProps) {
   // Format the completion date
-  const formattedDate = new Date(course.completionDate).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-  })
+  const formattedDate = new Date(course.completionDate).toLocaleDateString(
+    "en-US",
+    {
+      year: "numeric",
+      month: "long",
+    }
+  );
 
   return (
     <Card className="h-full flex flex-col hover:shadow-md transition-all duration-300 hover:-translate-y-1 group">
       <CardHeader className="pb-3 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         <div className="flex justify-between items-start relative z-10">
-          <CardTitle className="text-lg group-hover:text-primary transition-colors">{course.title}</CardTitle>
+          <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
+            {course.title}
+          </CardTitle>
           <Badge variant="outline" className="ml-2 shrink-0">
             {course.category}
           </Badge>
         </div>
       </CardHeader>
       <CardContent className="flex-grow">
-        {course.description && <p className="text-sm text-muted-foreground mb-4">{course.description}</p>}
+        {course.description && (
+          <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+            {course.description}
+          </p>
+        )}
 
         <div className="flex items-center text-sm text-muted-foreground mb-4">
           <CalendarIcon className="mr-2 h-4 w-4 text-primary" />
@@ -64,5 +79,5 @@ export function CourseCard({ course }: CourseCardProps) {
         </CardFooter>
       )}
     </Card>
-  )
+  );
 }

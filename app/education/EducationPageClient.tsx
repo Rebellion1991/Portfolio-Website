@@ -1,34 +1,43 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { getEducation } from "@/lib/content"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { EducationCard } from "@/components/education-card"
-import { EducationTimeline } from "@/components/education-timeline"
-import { GraduationCap, BookOpen, Award, Brain, School, Calendar, Trophy } from "lucide-react"
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { getEducation } from "@/lib/content";
+import type { Education } from "@/lib/types";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { EducationCard } from "@/components/education-card";
+import { EducationTimeline } from "@/components/education-timeline";
+import {
+  GraduationCap,
+  BookOpen,
+  Award,
+  Brain,
+  School,
+  Calendar,
+  Trophy,
+} from "lucide-react";
 
 export default function EducationPageClient() {
-  const [education, setEducation] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState("cards")
+  const [education, setEducation] = useState<Education[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("cards");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const educationData = await getEducation()
-        setEducation(educationData)
-        setIsLoading(false)
+        const educationData = await getEducation();
+        setEducation(educationData);
+        setIsLoading(false);
       } catch (error) {
-        console.error("Error fetching education:", error)
-        setIsLoading(false)
+        console.error("Error fetching education:", error);
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
-  // Example skills gained from education - in a real implementation, these could be part of the education data
+  // Example skills gained from education
   const educationalSkills = [
     { name: "Telecommunications Engineering", level: 95 },
     { name: "Network Architecture", level: 90 },
@@ -36,7 +45,7 @@ export default function EducationPageClient() {
     { name: "Wireless Communications", level: 92 },
     { name: "Digital Electronics", level: 88 },
     { name: "Research Methodology", level: 80 },
-  ]
+  ];
 
   if (isLoading) {
     return (
@@ -47,7 +56,7 @@ export default function EducationPageClient() {
           <div className="h-3 bg-muted rounded w-32"></div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -57,13 +66,18 @@ export default function EducationPageClient() {
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:20px_20px]"></div>
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-6">
                 <GraduationCap className="h-8 w-8" />
               </div>
-              <h1 className="mb-6">Education & Qualifications</h1>
+              <h1 className="font-heading mb-6">Education & Qualifications</h1>
               <p className="text-xl text-white/80">
-                My academic journey and qualifications in telecommunications and electrical engineering.
+                My academic journey and qualifications in telecommunications and
+                electrical engineering.
               </p>
             </motion.div>
           </div>
@@ -81,9 +95,16 @@ export default function EducationPageClient() {
               {
                 icon: Trophy,
                 label: "Achievements",
-                value: education.reduce((acc, edu) => acc + (edu.achievements?.length || 0), 0),
+                value: education.reduce(
+                  (acc, edu) => acc + (edu.achievements?.length || 0),
+                  0
+                ),
               },
-              { icon: Brain, label: "Core Skills", value: educationalSkills.length },
+              {
+                icon: Brain,
+                label: "Core Skills",
+                value: educationalSkills.length,
+              },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -95,7 +116,9 @@ export default function EducationPageClient() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
                   <stat.icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-3xl font-bold mb-1">{stat.value}</h3>
+                <h3 className="text-2xl font-heading font-bold mb-1">
+                  {stat.value}
+                </h3>
                 <p className="text-muted-foreground">{stat.label}</p>
               </motion.div>
             ))}
@@ -106,8 +129,16 @@ export default function EducationPageClient() {
       {/* Education Timeline */}
       <section className="py-20">
         <div className="container">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <Tabs defaultValue="cards" className="mb-12" onValueChange={setActiveTab}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Tabs
+              defaultValue="cards"
+              className="mb-12"
+              onValueChange={setActiveTab}
+            >
               <div className="flex justify-center mb-8">
                 <TabsList className="grid w-full max-w-md grid-cols-2">
                   <TabsTrigger value="cards" className="text-sm">
@@ -161,16 +192,20 @@ export default function EducationPageClient() {
               transition={{ duration: 0.5 }}
               className="bg-card rounded-xl p-8 border shadow-sm"
             >
-              <h2 className="text-2xl font-bold mb-6">Educational Philosophy</h2>
+              <h2 className="text-2xl font-bold mb-6">
+                Educational Philosophy
+              </h2>
               <p className="text-muted-foreground mb-6">
-                My educational journey has been focused on building a strong foundation in telecommunications
-                engineering while continuously expanding my knowledge through specialized courses and certifications. I
-                believe in the power of lifelong learning and staying current with industry advancements.
+                My educational journey has been focused on building a strong
+                foundation in telecommunications engineering while continuously
+                expanding my knowledge through specialized courses and
+                certifications. I believe in the power of lifelong learning and
+                staying current with industry advancements.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 <div className="bg-muted/50 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center">
+                  <h3 className="text-lg font-heading font-semibold mb-4 flex items-center">
                     <BookOpen className="h-5 w-5 mr-2 text-primary" />
                     Academic Focus
                   </h3>
@@ -191,7 +226,7 @@ export default function EducationPageClient() {
                 </div>
 
                 <div className="bg-muted/50 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center">
+                  <h3 className="text-lg font-heading font-semibold mb-4 flex items-center">
                     <Award className="h-5 w-5 mr-2 text-primary" />
                     Academic Achievements
                   </h3>
@@ -220,10 +255,13 @@ export default function EducationPageClient() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Skills Gained Through Education</h2>
+            <h2 className="text-3xl font-heading font-bold mb-4">
+              Skills Gained Through Education
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              My academic background has equipped me with a diverse set of technical and analytical skills that I apply
-              in my professional work.
+              My academic background has equipped me with a diverse set of
+              technical and analytical skills that I apply in my professional
+              work.
             </p>
           </div>
 
@@ -238,8 +276,12 @@ export default function EducationPageClient() {
                 className="bg-card rounded-xl p-6 border shadow-sm hover:shadow-md transition-all duration-300 group"
               >
                 <div className="flex justify-between mb-3">
-                  <h3 className="font-medium group-hover:text-primary transition-colors">{skill.name}</h3>
-                  <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                  <h3 className="font-medium group-hover:text-primary transition-colors">
+                    {skill.name}
+                  </h3>
+                  <span className="text-sm text-muted-foreground">
+                    {skill.level}%
+                  </span>
                 </div>
                 <div className="w-full bg-muted rounded-full h-2.5 overflow-hidden">
                   <motion.div
@@ -266,10 +308,12 @@ export default function EducationPageClient() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl font-bold mb-4">Continuing Education</h2>
+              <h2 className="text-3xl font-heading font-bold mb-4">
+                Continuing Education
+              </h2>
               <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                I believe in lifelong learning and regularly update my skills through professional courses and
-                certifications.
+                I believe in lifelong learning and regularly update my skills
+                through professional courses and certifications.
               </p>
 
               <div className="inline-flex flex-wrap justify-center gap-3 mb-8">
@@ -287,7 +331,10 @@ export default function EducationPageClient() {
                 </span>
               </div>
 
-              <a href="/courses" className="inline-flex items-center text-primary hover:underline font-medium">
+              <a
+                href="/courses"
+                className="inline-flex items-center text-primary hover:underline font-medium"
+              >
                 View all courses and certifications
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -296,7 +343,12 @@ export default function EducationPageClient() {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </a>
             </motion.div>
@@ -304,5 +356,5 @@ export default function EducationPageClient() {
         </div>
       </section>
     </main>
-  )
+  );
 }

@@ -1,80 +1,88 @@
-import fs from "fs"
-import path from "path"
-import type { Experience, Education, Course, Project, Profile } from "./types"
+/**
+ * @fileoverview Content management utilities for fetching and processing JSON content
+ * @module lib/content
+ */
 
-// Base content directory
-const contentDirectory = path.join(process.cwd(), "content")
-
-// Helper function to read and parse JSON files
-export async function readJsonFile<T>(filePath: string): Promise<T> {
-  const fullPath = path.join(contentDirectory, filePath)
-  const fileContents = fs.readFileSync(fullPath, "utf8")
-  return JSON.parse(fileContents) as T
-}
+import type { Experience, Education, Course, Project, Profile } from "./types";
 
 // Get profile data
 export async function getProfile(): Promise<Profile> {
-  return readJsonFile<Profile>("profile.json")
+  const profile = await import("../content/profile.json");
+  return profile.default;
 }
+
+/**
+ * Fetches and returns the profile data from profile.json
+ * @async
+ * @returns {Promise<Profile>} Profile data including personal info and skills
+ */
 
 // Get all experiences
 export async function getExperiences(): Promise<Experience[]> {
-  const experiences = await readJsonFile<Experience[]>("experiences.json")
-  // Sort by date (most recent first)
-  return experiences.sort((a, b) => {
-    const dateA = new Date(a.startDate).getTime()
-    const dateB = new Date(b.startDate).getTime()
-    return dateB - dateA
-  })
+  const experiences = await import("../content/experiences.json");
+  return experiences.default;
 }
+
+/**
+ * Fetches and returns professional experience data from experiences.json
+ * @async
+ * @returns {Promise<Experience[]>} Array of professional experiences
+ */
 
 // Get all education entries
 export async function getEducation(): Promise<Education[]> {
-  const education = await readJsonFile<Education[]>("education.json")
-  // Sort by date (most recent first)
-  return education.sort((a, b) => {
-    const dateA = new Date(a.startDate).getTime()
-    const dateB = new Date(b.startDate).getTime()
-    return dateB - dateA
-  })
+  const education = await import("../content/education.json");
+  return education.default;
 }
+
+/**
+ * Fetches and returns education history from education.json
+ * @async
+ * @returns {Promise<Education[]>} Array of education entries
+ */
 
 // Get all courses
 export async function getCourses(): Promise<Course[]> {
-  const courses = await readJsonFile<Course[]>("courses.json")
-  // Sort by completion date (most recent first)
-  return courses.sort((a, b) => {
-    const dateA = new Date(a.completionDate).getTime()
-    const dateB = new Date(b.completionDate).getTime()
-    return dateB - dateA
-  })
+  const courses = await import("../content/courses.json");
+  return courses.default;
 }
 
-// Get courses by category
-export async function getCoursesByCategory(category: string): Promise<Course[]> {
-  const courses = await getCourses()
-  return courses.filter((course) => course.category === category)
-}
+/**
+ * Fetches and returns course data from courses.json
+ * @async
+ * @returns {Promise<Course[]>} Array of courses and certifications
+ */
 
 // Get all projects
 export async function getProjects(): Promise<Project[]> {
-  const projects = await readJsonFile<Project[]>("projects.json")
-  // Sort by date (most recent first)
-  return projects.sort((a, b) => {
-    const dateA = new Date(a.date).getTime()
-    const dateB = new Date(b.date).getTime()
-    return dateB - dateA
-  })
+  const projects = await import("../content/projects.json");
+  return projects.default;
+}
+
+/**
+ * Fetches and returns project data from projects.json
+ * @async
+ * @returns {Promise<Project[]>} Array of portfolio projects
+ */
+
+// Get courses by category
+export async function getCoursesByCategory(
+  category: string
+): Promise<Course[]> {
+  const courses = await getCourses();
+  return courses.filter((course) => course.category === category);
 }
 
 // Get featured projects
 export async function getFeaturedProjects(): Promise<Project[]> {
-  const projects = await getProjects()
-  return projects.filter((project) => project.featured)
+  const projects = await getProjects();
+  return projects.filter((project) => project.featured);
 }
 
 // Get projects by category
-export async function getProjectsByCategory(category: string): Promise<Project[]> {
-  const projects = await getProjects()
-  return projects.filter((project) => project.category === category)
+export async function getProjectsByCategory(
+  category: string
+): Promise<Project[]> {
+  const projects = await getProjects();
+  return projects.filter((project) => project.category === category);
 }
