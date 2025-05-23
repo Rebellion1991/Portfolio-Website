@@ -15,16 +15,33 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://shenawy.xyz";
 
 // Define default metadata
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shenawy.xyz"),
   title: {
-    default: "Ahmed Shenawy - Mobile Network Specialist",
-    template: "%s | Ahmed Shenawy",
+    template: "%s - Ahmed Shenawy",
+    default: "Ahmed Shenawy - Mobile Network Expert & Telecom Consultant",
   },
   description:
-    "Senior Roaming Engineer specializing in mobile core network and roaming services optimization.",
-  icons: {
-    icon: { url: "/fav.png", type: "image/png" },
-    shortcut: { url: "/fav.png", type: "image/png" },
-    apple: { url: "/fav.png", type: "image/png" },
+    "Expert in mobile network optimization, roaming services, and telecommunications consulting. Over 10 years of industry experience.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://shenawy.xyz",
+    siteName: "Ahmed Shenawy",
+    images: [
+      {
+        url: "/images/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ahmed Shenawy - Mobile Network Expert & Telecom Consultant",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ahmed Shenawy - Mobile Network Expert",
+    description:
+      "Expert in mobile network optimization, roaming services, and telecommunications consulting.",
+    images: ["/images/og.jpg"],
   },
 };
 
