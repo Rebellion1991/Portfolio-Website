@@ -1,0 +1,169 @@
+[
+  {
+    "id": "exp-1",
+    "title": "Roaming Expert",
+    "company": "RMI - Rakuten Mobile International",
+    "location": "Germany",
+    "startDate": "2024-04-01",
+    "endDate": null,
+    "description": "Member of the engineering team for international roaming, overseeing the technical strategy and execution of projects supporting Rakuten's global expansion.",
+    "responsibilities": [
+      "Manage the engineering stream for professional services, delivering end-to-end solutions and technical support to international clients and partners",
+      "Collaborate closely with business, devices, BSS, and core network teams to ensure smooth coordination and timely delivery of roaming-related projects and services",
+      "Provide expert guidance on the architecture, deployment, and optimization of roaming network elements, supporting all business streams and ensuring high service reliability",
+      "Participate in cross-functional initiatives to enhance product offerings, drive innovation, and support the growth of Rakuten's international business portfolio",
+      "Represent the engineering division in customer engagements, technical workshops, and industry forums, showcasing Rakuten's capabilities and fostering strong global partnerships"
+    ],
+    "technologies": ["International Roaming", "Mobile Core Network", "5G SDA Products", "IMS Services"],
+    "achievements": [
+      "Successfully managed engineering stream for professional services",
+      "Provided expert guidance on roaming network elements"
+    ]
+  },
+  {
+    "id": "exp-2",
+    "title": "Senior Roaming Engineer",
+    "company": "RMI - Rakuten Mobile International",
+    "location": "Germany",
+    "startDate": "2023-10-01",
+    "endDate": "2024-04-30",
+    "description": "Co-Lead a professional service project for an MNO operator in Germany to develop and launch the international roaming services.",
+    "responsibilities": [
+      "Handle the end-to-end ideation, design, development, and implementation of new international roaming products and solutions",
+      "Responsible for all international roaming-related network elements, providing technical leadership and oversight",
+      "Cross-departmental collaboration with teams such as Devices, BSS, and Core to align technical requirements",
+      "Support the business development and pre-sales engineering streams for professional services",
+      "Drive continuous improvement initiatives by analyzing roaming service performance",
+      "Maintain comprehensive technical documentation and ensure compliance with industry standards"
+    ],
+    "technologies": ["5G SDA Products", "IMS Services", "International Roaming", "Mobile Core Network"],
+    "achievements": [
+      "Successfully launched international roaming services for German operator",
+      "Implemented advanced 5G roaming capabilities"
+    ]
+  },
+  {
+    "id": "exp-3",
+    "title": "Field Testing - Cyprus Ambassador",
+    "company": "WE17",
+    "location": "Cyprus",
+    "startDate": "2023-06-01",
+    "endDate": null,
+    "description": "Handling mobile terminals network and field testing operations within Cyprus.",
+    "responsibilities": [
+      "E2E network testing for all available RAT technologies as well as VAS services",
+      "Testing eSIM wearable devices",
+      "Participated in many projects for terminals from several manufacturers"
+    ],
+    "technologies": ["Mobile Terminal Testing", "eSIM", "RAT Technologies", "VAS Services"],
+    "achievements": [
+      "Successfully tested multiple terminal devices",
+      "Implemented comprehensive field testing protocols"
+    ]
+  },
+  {
+    "id": "exp-4",
+    "title": "Co-Founder",
+    "company": "Hybridverse",
+    "location": "Cyprus",
+    "startDate": "2018-10-01",
+    "endDate": "2020-09-30",
+    "description": "Hybridverse connects blockchain to decentralized operations, like real world data validation and verification, e-voting, generation of digital assets, stablecoins & more.",
+    "responsibilities": [
+      "Developed blockchain tools to boost operations",
+      "Implemented decentralized operations for real-world data validation",
+      "Created solutions for e-voting and digital assets"
+    ],
+    "technologies": ["Blockchain", "Decentralized Operations", "Digital Assets", "Stablecoins"],
+    "achievements": [
+      "Successfully launched blockchain tools for operations",
+      "Implemented decentralized validation systems"
+    ]
+  },
+  {
+    "id": "exp-5",
+    "title": "Mobile Network Administrator",
+    "company": "Primetel",
+    "location": "Cyprus",
+    "startDate": "2016-08-01",
+    "endDate": "2023-10-31",
+    "description": "Worked as a Mobile Network Engineer for more than seven years, participating in many projects related to the mobile core network.",
+    "responsibilities": [
+      "Participated in new mobile services planning, deployment and ATP testing operations like IMS services",
+      "Responsible for mobile network quality, performance metrics, KPIs and alarms for all mobile services",
+      "Designed BI dashboards using QlikSense and Microsoft Power BI",
+      "Provided Level 2 technical support for all mobile services (Voice, SMS, PS, IMS, Supplementary)",
+      "Led mobile terminals technical operations including testing new terminals",
+      "Responsible for TADIG operations for outbound and inbound roaming services",
+      "Handled TAP & NRTRDE files flows and technical issues",
+      "Participated in IREG testing for inbound and outbound roaming services"
+    ],
+    "technologies": [
+      "MSC, HLR, HSS, ATS, CSCF, SPS, MGW, UGW, MME",
+      "QlikSense",
+      "Microsoft Power BI",
+      "QxDM, QPST and QCAT",
+      "SS7, MAP and Diameter Protocols",
+      "Huawei & ZTE Network Management Systems"
+    ],
+    "achievements": [
+      "Successfully deployed IMS services",
+      "Improved mobile network quality and performance metrics",
+      "Led TADIG validation for new SIOT agreements",
+      "Participated in GSM Association working groups"
+    ]
+  },
+  {
+    "id": "exp-6",
+    "title": "Roaming Coordinator",
+    "company": "Primetel",
+    "location": "Cyprus",
+    "startDate": "2014-06-01",
+    "endDate": "2016-08-31",
+    "description": "Joined in the pre-launch phase for roaming services and was one of the key persons launching and managing the whole lifecycle of the roaming services.",
+    "responsibilities": [
+      "Commercial planning of new services and platforms",
+      "Procurement process of acquiring new services from roaming vendors",
+      "Forecasting budget and optimizing CapEx and OpEx of roaming services",
+      "Preparing roaming regulatory reports for local regulator and EU BEREC",
+      "Planning and scheduling IREG tests for all services with roaming partners",
+      "Reconciliation of Receivables and Payables roaming accounts",
+      "Coordinating AA14/IOT/OpData document updates through GSM Association RAEX system"
+    ],
+    "technologies": ["GSM Association RAEX System", "TAP/RAP/NRTRDE Files", "IREG Testing", "Roaming Platforms"],
+    "achievements": [
+      "Successfully launched roaming services from pre-launch phase",
+      "Optimized roaming service costs and operations",
+      "Implemented regulatory compliance for EU roaming regulations"
+    ]
+  },
+  {
+    "id": "exp-7",
+    "title": "Roaming Engineer",
+    "company": "Etisalat Egypt",
+    "location": "Egypt",
+    "startDate": "2012-03-01",
+    "endDate": "2014-04-30",
+    "description": "Part of the roaming revenue operations team, monitoring daily traffic and analyzing related wholesale operations in a proactive way.",
+    "responsibilities": [
+      "Monitor TAP/RAP/NRTRDE files flow from End-to-End perspective",
+      "Prepare daily, weekly and monthly operations reports and traffic analysis",
+      "Handle validation of new IOT implementation and wholesale agreements UAT",
+      "Coordinate AA.14 document updates through GSM Association RAEX system",
+      "Work with Billing & Finance to ensure IOT tariffs implementation",
+      "Participate in revenue assurance activities",
+      "Support and implement automation tools"
+    ],
+    "technologies": [
+      "TAP/RAP/NRTRDE Files",
+      "GSM Association RAEX System",
+      "Billing Systems",
+      "Revenue Assurance Tools"
+    ],
+    "achievements": [
+      "Prevented revenue leakage through proactive monitoring",
+      "Implemented automation tools for operational efficiency",
+      "Developed cross-departmental processes"
+    ]
+  }
+]

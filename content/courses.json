@@ -1,0 +1,110 @@
+[
+  {
+    "id": "course-1",
+    "title": "MASTERING WEB3 | University of Nicosia",
+    "provider": "University of Nicosia",
+    "certificateUrl": "https://blockstream.info/tx/8c6cfc297dec06ae2eebcd434ffac3dc1bb0ccc733bed835bfd9b262116f40fd",
+    "completionDate": "2023-05-15",
+    "description": "Comprehensive course covering Web3, Blockchain Technology, DeFi, and Tokenization concepts.",
+    "skills": ["WEB3", "Blockchain Technology", "DeFi", "Tokenization"],
+    "category": "Blockchain"
+  },
+  {
+    "id": "course-2",
+    "title": "4G-LTE EPC: Evolved Packet Core Network",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-4bd2c4aa-1664-4953-be5d-d3e20d708063/",
+    "completionDate": "2023-01-15",
+    "description": "Comprehensive course covering 4G Architecture, 4G Roaming, GTPv2 Protocol, and Call Flows.",
+    "skills": ["4G Architecture", "4G Roaming", "GTPv2 Protocol", "Call Flows"],
+    "category": "Mobile Networks"
+  },
+  {
+    "id": "course-3",
+    "title": "VoLTE | Voice Over LTE & IMS Network",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-1cb5de88-8df6-4690-a51d-c1fac2c5bd1d/",
+    "completionDate": "2022-11-20",
+    "description": "In-depth training on IMS Network Architecture, VoLTE Call Flows, VoLTE Performance Metrics, and SIP Protocol.",
+    "skills": ["IMS Network Architecture", "VoLTE Call Flows", "VoLTE Performance Metrics", "SIP Protocol"],
+    "category": "VoLTE & IMS"
+  },
+  {
+    "id": "course-4",
+    "title": "Mobile CS Voice Core Concepts in 2G GSM, 3G UMTS & 4G-LTE",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-c903d203-d233-4566-a44d-52f878e296b0/",
+    "completionDate": "2022-09-10",
+    "description": "Comprehensive coverage of Voice Call Flows, ISUP Protocol, and SIP Protocol across multiple generations.",
+    "skills": ["Voice Call Flows", "ISUP Protocol", "SIP Protocol", "2G/3G/4G Networks"],
+    "category": "Voice Services"
+  },
+  {
+    "id": "course-5",
+    "title": "SS7 & SIGTRAN technologies, Architecture & signaling flows",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-5282ef1d-b566-4961-b298-e8a887873979/",
+    "completionDate": "2022-07-25",
+    "description": "Advanced training on SS7 Protocol Stack and SIGTRAN Protocol Stack technologies.",
+    "skills": ["SS7 Protocol Stack", "SIGTRAN Protocol Stack", "Signaling Flows", "Network Architecture"],
+    "category": "Signaling Protocols"
+  },
+  {
+    "id": "course-6",
+    "title": "SIP | Session Initiation Protocol in Cellular Networks",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-0a112f03-23af-45a7-bda9-a6d23c694ec8/",
+    "completionDate": "2022-05-15",
+    "description": "Specialized course on SIP Protocol, SIP Diagrams, and Call Flows in cellular networks.",
+    "skills": ["SIP Protocol", "SIP Diagrams", "Call Flows", "Cellular Networks"],
+    "category": "Protocols"
+  },
+  {
+    "id": "course-7",
+    "title": "Qlik Sense for Data Science and Business Intelligence",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-2217c9ef-427a-43ce-9a31-6838a2cb0ddf/",
+    "completionDate": "2021-12-10",
+    "description": "Business Intelligence training focused on creating dashboards and data visualization using Qlik Sense.",
+    "skills": ["Business Intelligence", "Qlik Sense Dashboards", "Data Visualization", "Analytics"],
+    "category": "Business Intelligence"
+  },
+  {
+    "id": "course-8",
+    "title": "Microsoft Excel: Business Intelligence w/ Power Query & DAX",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-8c720ea3-7fe9-4b94-9309-9535c849bb88/",
+    "completionDate": "2021-10-05",
+    "description": "Advanced Excel training covering Data Analytics and Power Query for business intelligence applications.",
+    "skills": ["Data Analytics", "Power Query", "DAX", "Business Intelligence"],
+    "category": "Data Analytics"
+  },
+  {
+    "id": "course-9",
+    "title": "Bash Scripting and Shell Programming",
+    "provider": "Udemy",
+    "certificateUrl": "https://www.udemy.com/certificate/UC-c8a25e1a-e1d9-4a06-a387-dbdc55a4344d/",
+    "completionDate": "2021-08-20",
+    "description": "Comprehensive training on Shell Scripts and UNIX Bash programming for automation and system administration.",
+    "skills": ["Shell Scripts", "UNIX Bash", "Automation", "System Administration"],
+    "category": "Programming"
+  },
+  {
+    "id": "course-10",
+    "title": "Agile Development Practices",
+    "provider": "PMI",
+    "completionDate": "2021-06-15",
+    "description": "Project management training focused on Agile methodologies and problem-solving techniques.",
+    "skills": ["Project Management", "Agile Methodologies", "Problem Solving", "Team Collaboration"],
+    "category": "Project Management"
+  },
+  {
+    "id": "course-11",
+    "title": "CompTIA A+",
+    "provider": "CompTIA",
+    "completionDate": "2020-12-01",
+    "description": "Foundational IT certification covering software troubleshooting, security, and virtualization.",
+    "skills": ["Software Troubleshooting", "Security", "Virtualization", "Hardware Support"],
+    "category": "IT Fundamentals"
+  }
+]

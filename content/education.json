@@ -1,0 +1,30 @@
+[
+  {
+    "id": "edu-1",
+    "degree": "Bachelor of Science",
+    "field": "Computer Engineering",
+    "institution": "Arab Academy for Science & Technology AAST",
+    "location": "Alexandria, Egypt",
+    "startDate": "2006-09-01",
+    "endDate": "2011-06-30",
+    "description": "Developed a comprehensive smart home automation system for the graduation project, featuring IP wireless cameras for security and control. Designed integrated circuits to address various abnormal events, including smoke detection, fire detection, and temperature control.",
+    "achievements": [
+      "GPA: 2.8 out of 4.0",
+      "Graduation project featured in Cairo ICT 2011",
+      "Project showcased in Egyptian Engineering Day 2011",
+      "Volunteer in IEEE - AAST Student Branch (Feb 2008 - June 2011)",
+      "Organized more than 30 IEEE events including Startup Weekend Alexandria, CarTronics, Life on a Chip"
+    ]
+  },
+  {
+    "id": "edu-2",
+    "degree": "High School Diploma",
+    "field": "General Studies",
+    "institution": "El-Nasr Boys School E.B.S",
+    "location": "Alexandria, Egypt",
+    "startDate": "2003-09-01",
+    "endDate": "2006-06-30",
+    "description": "Completed secondary education with excellent academic performance.",
+    "achievements": ["GPA: 93.5% out of 100%", "Graduated with distinction"]
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "project-1",
+    "title": "Smart Home Automation System",
+    "description": "Developed a comprehensive smart home automation system for university graduation project, featuring IP wireless cameras for security and control. Designed integrated circuits to address various abnormal events, including smoke detection, fire detection, and temperature control.",
+    "technologies": ["Embedded Systems", "IP Cameras", "Circuit Design", "Home Automation"],
+    "imageUrl": "/placeholder.svg?height=400&width=600",
+    "featured": true,
+    "date": "2011-06-15",
+    "category": "Embedded Systems"
+  },
+  {
+    "id": "project-2",
+    "title": "International Roaming Services Launch",
+    "description": "Led the development and launch of international roaming services for a German MNO operator, implementing advanced 5G roaming capabilities and IMS services.",
+    "technologies": ["5G SDA Products", "IMS Services", "International Roaming", "Mobile Core Network"],
+    "imageUrl": "/placeholder.svg?height=400&width=600",
+    "featured": true,
+    "date": "2023-10-01",
+    "category": "Telecommunications"
+  },
+  {
+    "id": "project-3",
+    "title": "Mobile Network BI Dashboard",
+    "description": "Designed and implemented comprehensive Business Intelligence dashboards using QlikSense and Microsoft Power BI for monitoring mobile network quality, performance metrics, and KPIs across all network elements.",
+    "technologies": ["QlikSense", "Microsoft Power BI", "Data Analytics", "Network Monitoring"],
+    "imageUrl": "/placeholder.svg?height=400&width=600",
+    "featured": true,
+    "date": "2020-03-15",
+    "category": "Business Intelligence"
+  },
+  {
+    "id": "project-4",
+    "title": "Hybridverse Blockchain Platform",
+    "description": "Co-founded a platform connecting blockchain to decentralized operations, including real-world data validation, e-voting, and digital asset generation.",
+    "technologies": ["Blockchain", "Decentralized Operations", "Digital Assets", "Smart Contracts"],
+    "imageUrl": "/placeholder.svg?height=400&width=600",
+    "featured": true,
+    "date": "2018-10-01",
+    "category": "Blockchain"
+  }
+]

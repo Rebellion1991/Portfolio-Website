@@ -1,0 +1,47 @@
+{
+  "name": "Ahmed Shenawy",
+  "title": "Senior Roaming Engineer",
+  "summary": "With a background in mobile core network and roaming services, I specialize in fine-tuning mobile services and ensuring top-tier performance. I'm dedicated to delivering excellence in telecommunications, actively contributing to industry standards, and staying at the forefront of technological advancements. My goal is to optimize mobile core networks and provide subscribers with seamless, high-quality services.",
+  "location": "Germany",
+  "email": "ahmed@shenawy.xyz",
+  "website": "https://shenawy.xyz",
+  "socialLinks": {
+    "linkedin": "https://www.linkedin.com/in/ahmedshenawy/"
+  },
+  "skills": [
+    {
+      "category": "Core Network Technologies",
+      "items": [
+        "Mobile Core Services",
+        "SS7 Protocol Stack",
+        "SIGTRAN Protocol Stack",
+        "Roaming Services",
+        "IMS Services",
+        "5G SDA Products"
+      ]
+    },
+    {
+      "category": "Testing & Debugging",
+      "items": [
+        "Mobile Terminal Testing & Debugging",
+        "QxDM, QPST and QCAT",
+        "Regression Testing",
+        "IREG Testing",
+        "ATP Testing Operations"
+      ]
+    },
+    {
+      "category": "Business Intelligence & Analytics",
+      "items": ["QlikSense", "Microsoft Power BI", "Data Analytics", "Performance Metrics & KPIs"]
+    },
+    {
+      "category": "Roaming & Standards",
+      "items": [
+        "Roaming TADIG & IREG",
+        "TAP & NRTRDE Files",
+        "GSM Association Standards",
+        "Product Lifecycle Management"
+      ]
+    }
+  ]
+}
