@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import type { Education } from "@/lib/types"
-import { formatDateRange } from "@/lib/utils"
-import { GraduationCap, Award, MapPin } from "lucide-react"
+import { motion } from "framer-motion";
+import type { Education } from "@/lib/types";
+import { formatDateRange } from "@/lib/utils";
+import { GraduationCap, Award, MapPin } from "lucide-react";
 
 interface EducationTimelineProps {
-  education: Education[]
+  education: Education[];
 }
 
 export function EducationTimeline({ education }: EducationTimelineProps) {
@@ -36,7 +36,9 @@ export function EducationTimeline({ education }: EducationTimelineProps) {
             <div className="flex items-center mb-4">
               <GraduationCap className="h-6 w-6 mr-3 text-primary" />
               <div>
-                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{entry.degree}</h3>
+                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                  {entry.degree}
+                </h3>
                 <p className="text-lg">{entry.field}</p>
               </div>
             </div>
@@ -48,14 +50,16 @@ export function EducationTimeline({ education }: EducationTimelineProps) {
               </p>
             </div>
 
-            {entry.description && <p className="mb-4 text-muted-foreground">{entry.description}</p>}
+            {entry.description && (
+              <p className="mb-4 text-muted-foreground">{entry.description}</p>
+            )}
 
             {entry.achievements && entry.achievements.length > 0 && (
               <div className="mt-4">
                 <h4 className="font-semibold mb-3 flex items-center">
                   <Award className="h-4 w-4 mr-2 text-primary" />
                   Achievements
-                </h4>
+                </h4>{" "}
                 <ul className="space-y-2">
                   {entry.achievements.map((achievement, index) => (
                     <motion.li
@@ -66,8 +70,11 @@ export function EducationTimeline({ education }: EducationTimelineProps) {
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="flex items-start"
                     >
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary mt-2 mr-2"></span>
-                      <span>{achievement}</span>
+                      <span
+                        className="inline-block w-1.5 h-1.5 rounded-full bg-primary mt-2 mr-2 flex-shrink-0"
+                        aria-hidden="true"
+                      ></span>
+                      {achievement}
                     </motion.li>
                   ))}
                 </ul>
@@ -77,5 +84,5 @@ export function EducationTimeline({ education }: EducationTimelineProps) {
         </motion.div>
       ))}
     </div>
-  )
+  );
 }

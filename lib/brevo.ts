@@ -1,10 +1,9 @@
 import * as SibApiV3Sdk from "@getbrevo/brevo";
 
 const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-apiInstance.setApiKey(
-  SibApiV3Sdk.AccountApiApiKeys.apiKey,
-  process.env.BREVO_API_KEY || ""
-);
+// Set the API key for authentication
+(apiInstance as any).authentications.apiKey.apiKey =
+  process.env.BREVO_API_KEY || "";
 
 interface EmailOptions {
   to: string;

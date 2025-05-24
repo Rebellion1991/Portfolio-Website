@@ -1,11 +1,11 @@
-import type { Profile } from "@/lib/types"
+import type { Profile } from "@/lib/types";
 
 interface PersonJsonLdProps {
-  profile: Profile
+  profile: Profile;
 }
 
 export function PersonJsonLd({ profile }: PersonJsonLdProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://shenawy.xyz"
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://shenawy.xyz";
 
   const personData = {
     "@context": "https://schema.org",
@@ -19,9 +19,11 @@ export function PersonJsonLd({ profile }: PersonJsonLdProps) {
       addressLocality: profile.location,
     },
     email: profile.email,
-    sameAs: [profile.socialLinks.linkedin, profile.socialLinks.github, profile.socialLinks.twitter].filter(Boolean),
+    sameAs: [profile.socialLinks.linkedin, profile.socialLinks.github].filter(
+      Boolean
+    ),
     knowsAbout: profile.skills.flatMap((skillCategory) => skillCategory.items),
-  }
+  };
 
   return (
     <script
@@ -29,15 +31,15 @@ export function PersonJsonLd({ profile }: PersonJsonLdProps) {
       dangerouslySetInnerHTML={{ __html: JSON.stringify(personData) }}
       key="person-jsonld"
     />
-  )
+  );
 }
 
 interface WebsiteJsonLdProps {
-  profile: Profile
+  profile: Profile;
 }
 
 export function WebsiteJsonLd({ profile }: WebsiteJsonLdProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://shenawy.xyz"
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://shenawy.xyz";
 
   const websiteData = {
     "@context": "https://schema.org",
@@ -49,7 +51,7 @@ export function WebsiteJsonLd({ profile }: WebsiteJsonLdProps) {
       "@type": "Person",
       name: profile.name,
     },
-  }
+  };
 
   return (
     <script
@@ -57,5 +59,5 @@ export function WebsiteJsonLd({ profile }: WebsiteJsonLdProps) {
       dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
       key="website-jsonld"
     />
-  )
+  );
 }

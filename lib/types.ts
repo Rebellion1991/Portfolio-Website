@@ -26,6 +26,8 @@ export interface Profile {
   socialLinks: {
     /** LinkedIn profile URL */
     linkedin: string;
+    /** GitHub profile URL */
+    github?: string; // Added github as an optional property
   };
   /** Professional skills by category */
   skills: Skill[];

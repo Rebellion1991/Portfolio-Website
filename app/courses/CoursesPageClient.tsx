@@ -328,7 +328,10 @@ export default function CoursesPageClient() {
             </p>
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground">Sort by:</span>
-              <select className="text-sm bg-muted rounded-md px-2 py-1 border-0">
+              <select
+                className="text-sm bg-muted rounded-md px-2 py-1 border-0"
+                aria-label="Sort courses"
+              >
                 <option>Most Recent</option>
                 <option>Oldest First</option>
                 <option>A-Z</option>

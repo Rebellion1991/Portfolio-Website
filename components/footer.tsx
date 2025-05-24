@@ -1,13 +1,19 @@
-import Link from "next/link"
-import type { Profile } from "@/lib/types"
-import { GithubIcon, LinkedinIcon, TwitterIcon, MailIcon, MapPinIcon, ExternalLinkIcon } from "lucide-react"
+import Link from "next/link";
+import type { Profile } from "@/lib/types";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+  MapPinIcon,
+  ExternalLinkIcon,
+} from "lucide-react";
 
 interface FooterProps {
-  profile: Profile
+  profile: Profile;
 }
 
 export function Footer({ profile }: FooterProps) {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-muted/30 border-t">
@@ -21,7 +27,9 @@ export function Footer({ profile }: FooterProps) {
               <img src="/fav.png" alt="AS Logo" className="h-10 w-auto" />
               <span>Ahmed Shenawy</span>
             </Link>
-            <p className="mt-4 text-muted-foreground max-w-md">{profile.summary.split(".")[0]}.</p>
+            <p className="mt-4 text-muted-foreground max-w-md">
+              {profile.summary.split(".")[0]}.
+            </p>
             <div className="flex space-x-4 mt-6">
               {profile.socialLinks.linkedin && (
                 <a
@@ -33,7 +41,7 @@ export function Footer({ profile }: FooterProps) {
                 >
                   <LinkedinIcon className="h-5 w-5" />
                 </a>
-              )}
+              )}{" "}
               {profile.socialLinks.github && (
                 <a
                   href={profile.socialLinks.github}
@@ -43,17 +51,6 @@ export function Footer({ profile }: FooterProps) {
                   className="bg-card hover:bg-primary/10 text-muted-foreground hover:text-primary p-2 rounded-full transition-colors"
                 >
                   <GithubIcon className="h-5 w-5" />
-                </a>
-              )}
-              {profile.socialLinks.twitter && (
-                <a
-                  href={profile.socialLinks.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Twitter"
-                  className="bg-card hover:bg-primary/10 text-muted-foreground hover:text-primary p-2 rounded-full transition-colors"
-                >
-                  <TwitterIcon className="h-5 w-5" />
                 </a>
               )}
               <a
@@ -126,7 +123,9 @@ export function Footer({ profile }: FooterProps) {
               </li>
               <li className="flex items-start">
                 <MapPinIcon className="h-5 w-5 mr-3 text-primary mt-0.5" />
-                <span className="text-muted-foreground">{profile.location}</span>
+                <span className="text-muted-foreground">
+                  {profile.location}
+                </span>
               </li>
               <li className="flex items-start">
                 <ExternalLinkIcon className="h-5 w-5 mr-3 text-primary mt-0.5" />
@@ -148,5 +147,5 @@ export function Footer({ profile }: FooterProps) {
         </div>
       </div>
     </footer>
-  )
+  );
 }

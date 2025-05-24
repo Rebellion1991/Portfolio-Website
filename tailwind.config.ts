@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   darkMode: ["class"],
@@ -181,23 +182,23 @@ const config: Config = {
   plugins: [
     require("tailwindcss-animate"),
     // Custom plugin for accessibility utilities
-    ({ addUtilities, theme }) => {
+    plugin(({ addUtilities, theme }) => {
       const newUtilities = {
         ".focus-visible-ring": {
           "&:focus-visible": {
             outline: "none",
             "ring-width": "3px",
-            "ring-color": theme("colors.primary.DEFAULT"),
+            "ring-color": theme("colors.primary.DEFAULT") as string,
             "ring-offset-width": "2px",
-            "ring-offset-color": theme("colors.background"),
+            "ring-offset-color": theme("colors.background") as string,
           },
         },
         ".skip-link": {
           position: "absolute",
           top: "-40px",
           left: "6px",
-          background: theme("colors.primary.DEFAULT"),
-          color: theme("colors.primary.foreground"),
+          background: theme("colors.primary.DEFAULT") as string,
+          color: theme("colors.primary.foreground") as string,
           padding: "8px 16px",
           "text-decoration": "none",
           "border-radius": "4px",
@@ -228,12 +229,12 @@ const config: Config = {
           },
         },
         ".touch-target": {
-          "min-height": theme("spacing.touch-target"),
-          "min-width": theme("spacing.touch-target"),
+          "min-height": theme("spacing.touch-target") as string,
+          "min-width": theme("spacing.touch-target") as string,
         },
       };
       addUtilities(newUtilities);
-    },
+    }),
   ],
 };
 

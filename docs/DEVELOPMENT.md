@@ -12,24 +12,24 @@
 
 1. Clone the repository
 
-```bash
-git clone [repository-url]
-cd Portfolio-Website
-```
+   ```bash
+   git clone [repository-url]
+   cd Portfolio-Website
+   ```
 
-2. Install dependencies
+1. Install dependencies
 
-```bash
-pnpm install
-```
+   ```bash
+   pnpm install
+   ```
 
-3. Start the development server
+1. Start the development server
 
-```bash
-pnpm dev
-```
+   ```bash
+   pnpm dev
+   ```
 
-4. Open http://localhost:3000
+1. Open [http://localhost:3000](http://localhost:3000)
 
 ## Project Structure
 
@@ -62,27 +62,27 @@ pnpm dev
 ### Component Guidelines
 
 1. Create components in appropriate directories
-2. Use TypeScript interfaces for props
-3. Follow React best practices
-4. Implement proper error handling
-5. Add accessibility features
-6. Optimize performance
-7. Write meaningful comments
+1. Use TypeScript interfaces for props
+1. Follow React best practices
+1. Implement proper error handling
+1. Add accessibility features
+1. Optimize performance
+1. Write meaningful comments
 
 ### Content Updates
 
 1. Modify JSON files in `content/` directory
-2. Follow existing data structure
-3. Validate content format
-4. Test changes in development
+1. Follow existing data structure
+1. Validate content format
+1. Test changes in development
 
 ### Adding New Features
 
 1. Create feature branch
-2. Implement changes
-3. Add/update tests
-4. Update documentation
-5. Submit pull request
+1. Implement changes
+1. Add/update tests
+1. Update documentation
+1. Submit pull request
 
 ## Performance Optimization
 
@@ -128,21 +128,21 @@ pnpm dev
 
 1. Run type checking
 
-```bash
-pnpm type-check
-```
+   ```bash
+   pnpm type-check
+   ```
 
-2. Build for production
+1. Build for production
 
-```bash
-pnpm build
-```
+   ```bash
+   pnpm build
+   ```
 
-3. Test production build
+1. Test production build
 
-```bash
-pnpm start
-```
+   ```bash
+   pnpm start
+   ```
 
 ### Production Considerations
 
@@ -157,18 +157,18 @@ pnpm start
 ### Regular Tasks
 
 1. Update dependencies
-2. Check for security issues
-3. Monitor performance
-4. Update content
-5. Backup data
+1. Check for security issues
+1. Monitor performance
+1. Update content
+1. Backup data
 
 ### Troubleshooting
 
 1. Check error logs
-2. Verify configurations
-3. Test in development
-4. Check dependencies
-5. Review recent changes
+1. Verify configurations
+1. Test in development
+1. Check dependencies
+1. Review recent changes
 
 ## Best Practices
 

@@ -457,8 +457,13 @@ select:focus {
   a[href^="http"]:after {
     content: " (" attr(href) ")";
   }
-
   .page-break {
     page-break-before: always;
   }
+}
+
+/* Custom utility classes for dynamic image sizing */
+.image-placeholder {
+  width: var(--image-width, 300px);
+  height: var(--image-height, 200px);
 }

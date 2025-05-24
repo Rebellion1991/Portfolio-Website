@@ -82,6 +82,7 @@ export default async function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
+          {" "}
           <div className="flex min-h-screen flex-col">
             <SkipLink />
             <Header profile={profile} />
@@ -90,7 +91,9 @@ export default async function RootLayout({
             </main>
             <Footer profile={profile} />
           </div>
-          <Analytics />
+          <Suspense fallback={null}>
+            <Analytics />
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>

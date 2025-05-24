@@ -1,4 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* webhint:disable no-inline-styles */
+// @ts-nocheck
 import { ImageResponse } from "next/og";
+
+// NOTE: Inline styles are required for Next.js Twitter image generation
+// External CSS files are not supported in the Edge Runtime environment
 
 // Route segment config
 export const runtime = "edge";

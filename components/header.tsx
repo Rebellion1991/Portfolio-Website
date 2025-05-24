@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { ThemeToggle } from "./theme-toggle";
 import { MobileMenu } from "./mobile-menu";
 import { Menu, X } from "lucide-react";
+import { Profile } from "@/lib/types"; // Added import for Profile type
 
 const routes = [
   { name: "About", path: "/" },
@@ -16,7 +17,13 @@ const routes = [
   { name: "Contact", path: "/contact" },
 ];
 
-export function Header() {
+// Added HeaderProps interface
+interface HeaderProps {
+  profile: Profile;
+}
+
+// Updated component to use HeaderProps and accept profile
+export function Header({ profile }: HeaderProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -29,7 +36,6 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   // Close mobile menu when escape is pressed
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -42,11 +48,21 @@ export function Header() {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [mobileMenuOpen]);
 
+  // Update aria-expanded attribute
+  useEffect(() => {
+    const button = document.querySelector('[aria-controls="mobile-menu"]');
+    if (button) {
+      button.setAttribute("aria-expanded", mobileMenuOpen ? "true" : "false");
+    }
+  }, [mobileMenuOpen]);
+
   const isActive = (path: string) => {
     if (path === "/" && pathname === "/") return true;
     if (path !== "/" && pathname.startsWith(path)) return true;
     return false;
   };
+
+  const ariaExpandedValue = mobileMenuOpen ? "true" : "false";
 
   return (
     <>
@@ -71,7 +87,7 @@ export function Header() {
               aria-label="Ahmed Shenawy - Home"
             >
               <img src="/fav.png" alt="AS Logo" className="h-8 w-auto" />
-              <span>Ahmed Shenawy</span>
+              <span>{profile.name}</span> {/* Example usage of profile prop */}
             </Link>
           </motion.div>
 
@@ -108,12 +124,13 @@ export function Header() {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-4"
           >
-            <ThemeToggle />
+            <ThemeToggle />{" "}
             <button
+              type="button"
               className="md:hidden p-2 rounded-md hover:bg-muted focus-visible-ring touch-target"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
+              aria-expanded="false"
               aria-controls="mobile-menu"
             >
               {mobileMenuOpen ? (
