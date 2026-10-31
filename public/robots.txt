@@ -1,3 +1,18 @@
+# --- AI training crawlers: block ---
+# Search/retrieval agents (e.g. OAI-SearchBot, Claude-SearchBot, PerplexityBot)
+# are intentionally not listed here.
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Meta-ExternalAgent
+User-agent: Bytespider
+User-agent: cohere-ai
+User-agent: Diffbot
+Disallow: /
+
+# --- Everything else (search engines, etc.): allow ---
 # Allow all crawlers
 User-agent: *
 Allow: /
